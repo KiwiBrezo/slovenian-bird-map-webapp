@@ -12,9 +12,9 @@
     <!-- STATIC -->
 
     <!-- WEBJARS -->
-    <link rel="stylesheet" href="<c:url value="webjars/bootstrap/4.5.3/css/bootstrap.min.css"/>">
-    <link rel="stylesheet" href="<c:url value="webjars/jquery-ui/1.12.1/jquery-ui.min.css"/>">
-    <link rel="stylesheet" href="<c:url value="webjars/font-awesome/5.15.2/css/all.min.css"/>">
+    <link rel="stylesheet" href="/webjars/bootstrap/4.5.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/webjars/jquery-ui/1.12.1/jquery-ui.min.css">
+    <link rel="stylesheet" href="/webjars/font-awesome/5.15.2/css/all.min.css">
     <!-- WEBJARS -->
 
     <title>Slovenian Bird Map</title>
