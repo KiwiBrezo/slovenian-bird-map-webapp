@@ -5,12 +5,14 @@ import com.sbm.slovenianbirdmap.utils.PageNames;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class MainController {
+@RequestMapping("/map")
+public class MapController {
     @GetMapping("/")
-    public String mainPage(Model model) {
-        model.addAttribute(JspModelAttributes.VIEW_BODY, PageNames.MAIN_PAGE);
+    public String getMapView(Model model) {
+        model.addAttribute(JspModelAttributes.VIEW_BODY, PageNames.MAP_PAGE);
         return PageNames.INDEX_PAGE;
     }
 }
