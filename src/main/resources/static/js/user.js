@@ -5,10 +5,10 @@
     }
 
     function userInit() {
-        if ($("#succMsgVal").val() != undefined) {
+        if ($("#succMsgVal").val() != "") {
             $("#succMsg").show();
         }
-        if ($("#errMsgVal").val() != undefined) {
+        if ($("#errMsgVal").val() != "") {
             $("#errMsg").show();
         }
     }
