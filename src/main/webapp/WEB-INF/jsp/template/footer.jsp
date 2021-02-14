@@ -2,6 +2,7 @@
 
 <!-- STATIC -->
 <script src="/js/app.js" type="text/javascript"></script>
+<script src="/js/user.js" type="text/javascript"></script>
 <script src="/js/map/map.js" type="text/javascript"></script>
 <script src="/js/utils/test.js" type="text/javascript"></script>
 <!-- STATIC -->

@@ -16,10 +16,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/*")
-public class ApiController {
-
-    @Autowired
-    private TestModelDao testModelDao;
+public class ApiController extends AbstractController {
 
     @CrossOrigin("*")
     @GetMapping("/testAPI")

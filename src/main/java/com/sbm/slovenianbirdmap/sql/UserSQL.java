@@ -14,6 +14,13 @@ public class UserSQL {
     @Value("${user.register.check.email.exists}")
     private String checkIfUserExists;
 
+    @Value("${user.login.webapp}")
+    private String loginUserInWebapp;
+
+    public String getLoginUserInWebapp() {
+        return loginUserInWebapp;
+    }
+
     public String getRegisterNewUser() {
         return registerNewUser;
     }

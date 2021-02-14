@@ -7,5 +7,6 @@
     function initOther() {
         MapComponent.init();
         TestComponent.init();
+        UserController.init();
     }
 })(AppController = {})

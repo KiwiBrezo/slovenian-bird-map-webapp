@@ -1,5 +1,6 @@
 package com.sbm.slovenianbirdmap.dao;
 
+import com.sbm.slovenianbirdmap.models.form.LoginForm;
 import com.sbm.slovenianbirdmap.models.form.RegisterForm;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -30,5 +31,15 @@ public class UserDao extends AbstractDao{
                 .addValue("mobile_token", UUID.randomUUID().toString());
 
         namedParameterJdbcTemplate.update(sql, params);
+    }
+
+    public Boolean loginUserWebapp(LoginForm loginForm) {
+        String sql = userSQL.getLoginUserInWebapp();
+
+        SqlParameterSource params = new MapSqlParameterSource()
+                .addValue("email", loginForm.getEmail())
+                .addValue("password", loginForm.getPassword());
+
+        return namedParameterJdbcTemplate.queryForObject(sql, params, Boolean.class);
     }
 }
