@@ -42,4 +42,13 @@ public class UserDao extends AbstractDao{
 
         return namedParameterJdbcTemplate.queryForObject(sql, params, Boolean.class);
     }
+
+    public String getUserRole(LoginForm loginForm) {
+        String sql = userSQL.getLoginUserRole();
+
+        SqlParameterSource params = new MapSqlParameterSource()
+                .addValue("email", loginForm.getEmail());
+
+        return namedParameterJdbcTemplate.queryForObject(sql, params, String.class);
+    }
 }

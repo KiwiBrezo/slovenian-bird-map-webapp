@@ -17,6 +17,9 @@ public class UserSQL {
     @Value("${user.login.webapp}")
     private String loginUserInWebapp;
 
+    @Value("${user.login.webapp.role}")
+    private String loginUserRole;
+
     public String getLoginUserInWebapp() {
         return loginUserInWebapp;
     }
@@ -27,5 +30,9 @@ public class UserSQL {
 
     public String getCheckIfUserExists() {
         return checkIfUserExists;
+    }
+
+    public String getLoginUserRole() {
+        return loginUserRole;
     }
 }
