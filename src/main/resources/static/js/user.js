@@ -5,11 +5,21 @@
     }
 
     function userInit() {
-        if ($("#succMsgVal").val() != "") {
+        if ($("#succMsgVal").text() != "") {
             $("#succMsg").show();
         }
-        if ($("#errMsgVal").val() != "") {
+        if ($("#errMsgVal").text() != "") {
             $("#errMsg").show();
         }
+
+        $('#loginForm').submit(function() {
+            $("#loginPasswordInput").val(sha512($("#loginPasswordInput").text()));
+            return true;
+        });
+
+        $('#registerForm').submit(function() {
+            $("#registerPasswordInput").val(sha512($("#loginPasswordInput").text()));
+            return true;
+        });
     }
 })(UserController = {})

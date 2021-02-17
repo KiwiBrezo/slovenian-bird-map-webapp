@@ -16,6 +16,7 @@
 <script src="/webjars/chartjs/26962ce/Chart.min.js" type="text/javascript"></script>
 <script src="/webjars/datatables/1.10.23/js/dataTables.dataTables.min.js" type="text/javascript"></script>
 <script src="/webjars/animejs/3.2.0/lib/anime.min.js" type="text/javascript"></script>
+<script src="/webjars/js-sha512/0.8.0/build/sha512.min.js" type="text/javascript"></script>
 <!-- WEBJARS -->
 
 <!-- INIT MAIN APP COMPONENT -->
