@@ -4,6 +4,7 @@ import com.sbm.slovenianbirdmap.utils.JspModelAttributes;
 import com.sbm.slovenianbirdmap.utils.PageNames;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -11,8 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/map")
 public class MapController {
     @GetMapping("/")
-    public String getMapView(Model model) {
-        model.addAttribute(JspModelAttributes.VIEW_BODY, PageNames.MAP_PAGE);
-        return PageNames.INDEX_PAGE;
+    public String getMapView(@CookieValue(value = "userRole", defaultValue = "none") String userRole,
+                             @CookieValue(value = "userEmail", defaultValue = "none") String userEmail,
+                             Model model) {
+        //if (userRole.equals("user") || userRole.equals("admin")) {
+        if (true) {
+            model.addAttribute(JspModelAttributes.VIEW_BODY, PageNames.MAP_PAGE);
+            return PageNames.INDEX_PAGE;
+        }
+
+        return "redirect:/user/login";
     }
 }

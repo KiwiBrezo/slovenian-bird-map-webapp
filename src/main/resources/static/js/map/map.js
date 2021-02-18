@@ -27,5 +27,7 @@
                 maxZoom: mapMaxZoom
             })
         });
+
+        $(".ol-attribution").hide();
     }
 })(MapComponent = {});
