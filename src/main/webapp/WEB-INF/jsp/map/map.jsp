@@ -16,17 +16,19 @@
 </div>
 
 <div class="search-field-container">
-    <input type="text" name="searchTerm" id="serachInput" class="search-field-input">
-    <span class="float-right">
-        <i class="fas fa-lg fa-search cursor-pointer"></i>
-    </span>
+    <div class="input-group main-search">
+        <input type="text" class="form-control" placeholder="Slo. ali lat. ime ptice" aria-label="Slo. ali lat. ime ptice">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button"><i class="fas fa-lg fa-search cursor-pointer"></i></button>
+        </div>
+    </div>
 </div>
 
 <div class="search-result-container">
     <div class="container-header">
         <span>Rezultat iskanja:</span>
         <span class="float-right">
-            <i class="fas fa-times cursor-pointer"></i>
+            <i class="fas fa-times cursor-pointer" onclick="MapComponent.closeSearchResults()"></i>
         </span>
     </div>
     <div class="container-body">

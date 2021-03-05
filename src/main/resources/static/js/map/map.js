@@ -12,6 +12,11 @@
         initMap();
     }
 
+    exports.closeSearchResults = function() {
+        $('.search-result-container').hide();
+        $('.search-result-container .container-body').empty();
+    }
+
     function initMap() {
         MapComponent.map = new ol.Map({
             target: 'map',

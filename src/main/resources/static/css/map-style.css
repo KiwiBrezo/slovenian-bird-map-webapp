@@ -97,3 +97,14 @@
     margin-top: 5px;
     margin-bottom: 10px;
 }
+
+.main-search {
+    padding-left: 13px;
+    padding-right: 14px;
+    padding-top: 2px;
+}
+
+.search-result-container .fa-times {
+    position: relative;
+    top: 2px;
+}
