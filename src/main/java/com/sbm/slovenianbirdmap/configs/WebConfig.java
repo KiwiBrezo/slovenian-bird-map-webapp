@@ -22,6 +22,9 @@ public class WebConfig implements WebMvcConfigurer {
         registry
                 .addResourceHandler("/css/**")
                 .addResourceLocations("classpath:/static/css/");
+        registry
+                .addResourceHandler("/icons/**")
+                .addResourceLocations("classpath:/static/icons/");
     }
 
     @Override

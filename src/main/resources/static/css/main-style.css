@@ -1,8 +1,83 @@
 .test {
-    color: red;
     background-color: black;
 }
 
 .cursor-pointer:hover {
     cursor: pointer;
+}
+
+.login-container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 900px;
+    height: 100%;
+}
+
+.register-container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 900px;
+    height: 100%;
+}
+
+.login-form-container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 350px;
+    border: 1px solid #909090;
+    box-shadow: 3px 5px 14px 1px #888888;
+    margin-top: 200px;
+}
+
+.register-form-container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 350px;
+    border: 1px solid #909090;
+    box-shadow: 3px 5px 14px 1px #888888;
+    margin-top: 200px;
+}
+
+.login-btn {
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
+}
+
+.register-btn {
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
+}
+
+.login-logo {
+    margin-left: auto;
+    margin-right: auto;
+    width: 60px;
+}
+
+.login-form-container a {
+    font-size: 13px;
+    color: #888888;
+    text-decoration: none;
+}
+
+.login-form-container a:hover {
+    color: #888888;
+    text-decoration: none;
+}
+
+.register-form-container div:first-child span {
+    font-size: 19px;
+}
+
+.register-form-container a {
+    font-size: 13px;
+    color: #888888;
+    text-decoration: none;
+}
+
+.register-form-container a:hover {
+    color: #888888;
+    text-decoration: none;
 }
