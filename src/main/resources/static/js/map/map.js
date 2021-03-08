@@ -5,6 +5,8 @@
     var mapSLOCenterCoordinateLon = 15.005333; // center of slo [14.815333, 46.119944]
     var mapSLOCenterCoordinateLat = 46.119944;
 
+    var mousePositionControl;
+
     exports.map = null;
 
     exports.init = function () {
@@ -18,6 +20,14 @@
     }
 
     function initMap() {
+        mousePositionControl = new ol.control.MousePosition({
+            coordinateFormat: ol.coordinate.createStringXY(6),
+            projection: 'EPSG:4326',
+            className: 'custom-mouse-position',
+            target: document.getElementById('mouse-position'),
+            undefinedHTML: '---------, ---------',
+        });
+
         MapComponent.map = new ol.Map({
             target: 'map',
             layers: [
@@ -30,7 +40,8 @@
                 zoom: mapStartZoom,
                 minZoom: mapMinZoom,
                 maxZoom: mapMaxZoom
-            })
+            }),
+            controls: ol.control.defaults().extend([mousePositionControl])
         });
 
         $(".ol-attribution").hide();

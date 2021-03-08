@@ -5,7 +5,11 @@
 </div>
 
 <div class="scale-container">
-
+    <div class="row coordinate-text">
+        <span>[</span>
+        <div id="mouse-position"></div>
+        <span>]</span>
+    </div>
 </div>
 
 <div class="user-container">
@@ -24,7 +28,7 @@
     </div>
 </div>
 
-<div class="search-result-container">
+<div class="search-result-container d-none">
     <div class="container-header">
         <span>Rezultat iskanja:</span>
         <span class="float-right">
