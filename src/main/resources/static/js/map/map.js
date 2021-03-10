@@ -19,6 +19,18 @@
         $('.search-result-container .container-body').empty();
     }
 
+    function toggleUserMenu() {
+        if ($(this).hasClass("fa-caret-down")) {
+            $(this).removeClass("fa-caret-down");
+            $(this).addClass("fa-caret-up");
+            console.log("Razsiri...");
+        } else if ($(this).hasClass("fa-caret-up")) {
+            $(this).removeClass("fa-caret-up");
+            $(this).addClass("fa-caret-down");
+            console.log("Skrci...");
+        }
+    }
+
     function initMap() {
         mousePositionControl = new ol.control.MousePosition({
             coordinateFormat: ol.coordinate.createStringXY(6),
@@ -45,5 +57,9 @@
         });
 
         $(".ol-attribution").hide();
+
+        $(".user-container").click(function() {
+            toggleUserMenu();
+        });
     }
 })(MapComponent = {});

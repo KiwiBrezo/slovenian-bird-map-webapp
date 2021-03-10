@@ -1,7 +1,12 @@
 <div id="map" class="map"></div>
 
 <div class="location-selector-container">
-
+    <select class="form-select location-selector-select">
+        <option selected>Slovenija</option>
+        <option value="1">Ormoške lagune</option>
+        <option value="2">Škocjanski zatok</option>
+        <option value="3">Ljubljansko barje</option>
+    </select>
 </div>
 
 <div class="scale-container">
@@ -15,7 +20,7 @@
 <div class="user-container">
     <span>Ime usera</span>
     <span class="float-right">
-        <i class="fas fa-caret-down cursor-pointer"></i>
+        <i class="fas fa-caret-down cursor-pointer user-menu-btn"></i>
     </span>
 </div>
 

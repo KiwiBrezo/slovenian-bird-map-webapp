@@ -110,7 +110,15 @@
 }
 
 .coordinate-text {
-    margin-left: 10px !important;
-    margin-top: 15px !important;
-    font-size: 20px;
+    margin-left: 12px !important;
+    margin-top: 17px !important;
+    font-size: 18px;
+}
+
+.location-selector-select {
+    font-size: 18px;
+    margin-top: 11px;
+    margin-left: 53px;
+    width: 307px;
+    height: 40px;
 }
