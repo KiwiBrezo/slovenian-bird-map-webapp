@@ -20,14 +20,22 @@
     }
 
     function toggleUserMenu() {
-        if ($(this).hasClass("fa-caret-down")) {
-            $(this).removeClass("fa-caret-down");
-            $(this).addClass("fa-caret-up");
-            console.log("Razsiri...");
-        } else if ($(this).hasClass("fa-caret-up")) {
-            $(this).removeClass("fa-caret-up");
-            $(this).addClass("fa-caret-down");
-            console.log("Skrci...");
+        var element = $(".user-menu-btn");
+        if (element.hasClass("fa-caret-down")) {
+            element.removeClass("fa-caret-down");
+            element.addClass("fa-caret-up");
+            $(".user-container").animate({
+                height: "155px"
+            }, 300, function () {
+                $(".user-container-body").show();
+            });
+        } else if (element.hasClass("fa-caret-up")) {
+            element.removeClass("fa-caret-up");
+            element.addClass("fa-caret-down");
+            $(".user-container-body").hide();
+            $(".user-container").animate({
+                height: "45px"
+            }, 300, function () { });
         }
     }
 
@@ -58,8 +66,13 @@
 
         $(".ol-attribution").hide();
 
-        $(".user-container").click(function() {
+        $(".user-container .float-right").click(function() {
             toggleUserMenu();
         });
+
+        $(".tool-container").draggable({
+            containment: $("#map"),
+            handle: $(".tool-container .drag-handle")
+        })
     }
 })(MapComponent = {});

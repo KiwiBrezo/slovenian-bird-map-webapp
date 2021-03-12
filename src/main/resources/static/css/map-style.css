@@ -37,7 +37,7 @@
     border-radius: 15px;
     border: 1px solid #87986a;
     text-align: center;
-    padding-top: 8px;
+    z-index: 10;
 }
 
 .user-container .float-right {
@@ -45,11 +45,33 @@
     right: 9px;
 }
 
+.user-container-header {
+    height: 45px;
+    padding-top: 8px;
+}
+
+.user-container-body {
+    display: none;
+    border-top: 1px solid #87986a;
+    margin: 0 5px;
+}
+
+.user-container-body span {
+    width: 100%;
+    height: 25px;
+    text-align: center;
+}
+
+.user-container-body span a, .user-container-body span a:hover {
+    color: white !important;
+    text-decoration: none;
+}
+
 .tool-container {
     background-color: rgba(255, 255, 255, 0.85);
     position: fixed;
-    top: 135px;
-    left: 40px;
+    top: 140px;
+    left: 70px;
     height: 650px;
     width: 330px;
     border-radius: 15px;

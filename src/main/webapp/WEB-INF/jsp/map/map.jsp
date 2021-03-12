@@ -1,3 +1,5 @@
+<%@ page contentType="text/html; charset=UTF-8" %>
+
 <div id="map" class="map"></div>
 
 <div class="location-selector-container">
@@ -18,10 +20,26 @@
 </div>
 
 <div class="user-container">
-    <span>Ime usera</span>
-    <span class="float-right">
-        <i class="fas fa-caret-down cursor-pointer user-menu-btn"></i>
-    </span>
+    <div class="user-container-header">
+        <span>Ime usera</span>
+        <span class="float-right">
+            <i class="fas fa-caret-down cursor-pointer user-menu-btn"></i>
+        </span>
+    </div>
+    <div class="user-container-body">
+        <div class="row mx-1">
+            <span class="cursor-pointer"><a href="#">Profil</a></span>
+        </div>
+        <div class="row mx-1">
+            <span class="cursor-pointer"><a href="#">Knjižnjica ptic</a></span>
+        </div>
+        <div class="row mx-1">
+            <span class="cursor-pointer"><a href="#">Nastavitve</a></span>
+        </div>
+        <div class="row mx-1">
+            <span class="cursor-pointer"><a href="/user/logout">Odjava</a></span>
+        </div>
+    </div>
 </div>
 
 <div class="search-field-container">
@@ -48,7 +66,7 @@
 <div class="tool-container">
     <div class="container-header">
         <span>Orodja:</span>
-        <span class="float-right">
+        <span class="float-right drag-handle">
             <i class="fas fa-arrows-alt cursor-pointer"></i>
         </span>
     </div>
