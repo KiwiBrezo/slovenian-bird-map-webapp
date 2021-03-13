@@ -29,9 +29,10 @@
 .user-container {
     color: white;
     background-color: #718355;
-    position: fixed;
-    top: 25px;
-    right: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 20px;
     width: 150px;
     height: 45px;
     border-radius: 15px;
@@ -70,8 +71,8 @@
 .tool-container {
     background-color: rgba(255, 255, 255, 0.85);
     position: fixed;
-    top: 140px;
-    left: 70px;
+    top: 100px;
+    left: 25px;
     height: 650px;
     width: 330px;
     border-radius: 15px;
@@ -81,8 +82,8 @@
 .search-field-container {
     background-color: rgba(255, 255, 255, 0.85);
     position: fixed;
-    top: 105px;
-    right: 30px;
+    top: 20px;
+    right: 25px;
     width: 330px;
     height: 45px;
     border-radius: 15px;
@@ -92,12 +93,35 @@
 .search-result-container {
     background-color: rgba(255, 255, 255, 0.85);
     position: fixed;
-    top: 165px;
-    right: 30px;
+    top: 100px;
+    right: 25px;
     width: 330px;
     max-height: 700px;
     border-radius: 15px;
     border: 1px solid #87986a;
+    display: none;
+}
+
+.tool-btn-container {
+    position: fixed;
+    top: 20px;
+    right: 365px;
+    height: 45px;
+    width: 45px;
+    padding-top: 10.5px;
+    border-radius: 15px;
+    border: 1px solid #87986a;
+    background-color: rgba(255, 255, 255, 0.85);
+}
+
+.tool-btn-container .fa-tools {
+    width: 100%;
+    height: 60%;
+}
+
+.tool-btn-container.activate {
+    background-color: #718355 !important;
+    color: white !important;
 }
 
 .container-header {
@@ -143,4 +167,33 @@
     margin-left: 53px;
     width: 307px;
     height: 40px;
+}
+
+.add-observation-container {
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+    margin-bottom: 5px;
+}
+
+.add-observation-container span:first-child {
+    font-size: 14px;
+}
+
+.analiyze-data-container span:first-child {
+    font-size: 14px;
+}
+
+.analiyze-data-container .btm-container {
+    position: relative;
+    bottom: 0px;
+}
+
+.analiyze-data-container .btm-container .btn-outline-primary{
+    position: absolute;
+    left: 10px;
+}
+
+.analiyze-data-container .btm-container .btn-outline-success{
+    position: absolute;
+    right: 10px;
 }

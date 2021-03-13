@@ -39,6 +39,17 @@
         }
     }
 
+    function toggleToolsMenu() {
+        var element = $(".tool-btn-container");
+        if (element.hasClass("activate")) {
+            element.removeClass("activate");
+            $(".tool-container").hide();
+        } else {
+            element.addClass("activate");
+            $(".tool-container").show();
+        }
+    }
+
     function initMap() {
         mousePositionControl = new ol.control.MousePosition({
             coordinateFormat: ol.coordinate.createStringXY(6),
@@ -73,6 +84,20 @@
         $(".tool-container").draggable({
             containment: $("#map"),
             handle: $(".tool-container .drag-handle")
-        })
+        });
+
+        $(".tool-btn-container").click(function () {
+            toggleToolsMenu();
+        });
+
+        $("#bird-select").select2({
+           data: [{
+               id: 0,
+               text: "lalala"
+           }, {
+               id: 1,
+               text: "Muh muh"
+           }]
+        });
     }
 })(MapComponent = {});

@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="/webjars/font-awesome/5.15.2/css/all.min.css">
     <link rel="stylesheet" href="/webjars/openlayers/6.4.3/ol.css">
     <link rel="stylesheet" href="/webjars/datatables/1.10.23/css/dataTables.jqueryui.min.css">
+    <link rel="stylesheet" href="/webjars/select2/4.0.13/css/select2.min.css">
     <!-- WEBJARS -->
 
     <title>Slovenian Bird Map</title>

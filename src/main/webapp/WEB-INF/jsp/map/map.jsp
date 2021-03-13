@@ -42,6 +42,10 @@
     </div>
 </div>
 
+<div class="tool-btn-container activate cursor-pointer">
+    <i class="fas fa-tools"></i>
+</div>
+
 <div class="search-field-container">
     <div class="input-group main-search">
         <input type="text" class="form-control" placeholder="Slo. ali lat. ime ptice" aria-label="Slo. ali lat. ime ptice">
@@ -51,7 +55,7 @@
     </div>
 </div>
 
-<div class="search-result-container d-none">
+<div class="search-result-container">
     <div class="container-header">
         <span>Rezultat iskanja:</span>
         <span class="float-right">
@@ -71,7 +75,21 @@
         </span>
     </div>
     <div class="container-body">
+        <div class="add-observation-container mx-0 w-100">
+            <span class="row mx-0">Dodaj opazovanje:</span>
+            <select name="bird" id="bird-select" class="form-select w-100">
+                <option value="-1" selected>Izberi opazovano ptico</option>
+            </select>
+            <input type="text" class="form-control" placeholder="Komentar ob opazovanju...">
+        </div>
 
+        <div class="analiyze-data-container mx-0">
+            <span class="row mx-0">Analiziranje opazovanj:</span>
+            <div class="row mx-0 btm-container">
+                <button class="btn btn-outline-primary">Ponastvai</button>
+                <button class="btn btn-outline-success">Uporabi</button>
+            </div>
+        </div>
     </div>
 </div>
 
