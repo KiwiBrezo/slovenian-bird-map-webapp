@@ -71,9 +71,9 @@
 .tool-container {
     background-color: rgba(255, 255, 255, 0.85);
     position: fixed;
-    top: 100px;
-    left: 25px;
-    height: 650px;
+    top: 75px;
+    left: 55px;
+    height: 540px;
     width: 330px;
     border-radius: 15px;
     border: 1px solid #87986a;
@@ -175,11 +175,29 @@
     margin-bottom: 5px;
 }
 
-.add-observation-container span:first-child {
+.add-observation-container span.title-text {
     font-size: 14px;
 }
 
-.analiyze-data-container span:first-child {
+.add-observation-container .select2-container, .add-observation-container .select2-selection, .add-observation-container .select2-selection__rendered, .add-observation-container .select2-selection__arrow {
+    height: 38px !important;
+}
+
+.analiyze-data-container .select2-container, .analiyze-data-container .select2-selection, .analiyze-data-container .select2-selection__rendered, .analiyze-data-container .select2-selection__arrow {
+    height: 38px !important;
+}
+
+.add-observation-container .select2-selection, .analiyze-data-container .select2-selection {
+    border: 1px solid #ced4da !important;
+}
+
+.add-observation-container .select2-selection__rendered, .analiyze-data-container .select2-selection__rendered {
+    padding-top: 4px;
+    padding-left: 12px !important;
+    color: #6c757d !important;
+}
+
+.analiyze-data-container span.title-text {
     font-size: 14px;
 }
 
@@ -188,12 +206,36 @@
     bottom: 0px;
 }
 
-.analiyze-data-container .btm-container .btn-outline-primary{
-    position: absolute;
-    left: 10px;
+.analiyze-data-container .btm-container button {
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.analiyze-data-container .btm-container .btn-outline-success{
-    position: absolute;
-    right: 10px;
+#add-observation-location-selector {
+    margin-left: auto;
+    width: 95px;
+}
+
+.seasons-btn-container button {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.point-selector-container button {
+    margin-right: 5px;
+    float: left;
+}
+
+.point-selector-container .input-group {
+    width: 120px;
+}
+
+#poligon-selector-btn {
+    margin-left: auto;
+    width: 100px;
+}
+
+#observation-number {
+    width: 95px;
+    margin-left: auto;
 }

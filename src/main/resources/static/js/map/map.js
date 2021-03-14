@@ -99,5 +99,15 @@
                text: "Muh muh"
            }]
         });
+
+        $("#area-select").select2({
+            data: [{
+                id: 0,
+                text: "lalala"
+            }, {
+                id: 1,
+                text: "Muh muh"
+            }]
+        });
     }
 })(MapComponent = {});

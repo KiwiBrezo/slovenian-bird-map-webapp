@@ -76,16 +76,49 @@
     </div>
     <div class="container-body">
         <div class="add-observation-container mx-0 w-100">
-            <span class="row mx-0">Dodaj opazovanje:</span>
-            <select name="bird" id="bird-select" class="form-select w-100">
+            <span class="row mx-0 mb-2 title-text">Dodaj opazovanje:</span>
+            <select name="bird" id="bird-select" class="form-select w-100 my-1">
                 <option value="-1" selected>Izberi opazovano ptico</option>
             </select>
-            <input type="text" class="form-control" placeholder="Komentar ob opazovanju...">
+            <div class="row mx-0 my-1">
+                <input type="text" class="form-control col-8" id="observation-comment" placeholder="Komentar...">
+                <input type="number" class="form-control" id="observation-number" placeholder="Kol.">
+            </div>
+            <div class="row mx-0">
+                <input class="form-control col-8" type="date">
+                <button class="btn btn-outline-success" id="add-observation-location-selector"><i class="fas fa-map-marker-alt"></i></button>
+            </div>
+            <button class="btn btn-primary w-100 mt-2">Dodaj</button>
         </div>
 
         <div class="analiyze-data-container mx-0">
-            <span class="row mx-0">Analiziranje opazovanj:</span>
-            <div class="row mx-0 btm-container">
+            <span class="row mx-0 title-text">Analiziranje opazovanj:</span>
+            <div class="row mx-0 my-2">
+                <input class="form-control col-6" type="date">
+                <input class="form-control col-6" type="date">
+            </div>
+            <div class="row mx-0 seasons-btn-container my-2">
+                <button class="btn btn-outline-secondary"><i class="fas fa-seedling"></i></button>
+                <button class="btn btn-outline-secondary"><i class="fas fa-sun"></i></button>
+                <button class="btn btn-outline-secondary"><i class="fas fa-cloud-showers-heavy"></i></button>
+                <button class="btn btn-outline-secondary"><i class="far fa-snowflake"></i></button>
+            </div>
+            <div class="row mx-0 my-2">
+                <div class="col-7 px-0 mr-2 point-selector-container">
+                    <button class="btn btn-outline-secondary"><i class="fas fa-street-view"></i></button>
+                    <div class="input-group">
+                        <input type="number" class="form-control" value="1">
+                        <div class="input-group-append">
+                            <span class="input-group-text" id="basic-addon2">KM</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-outline-secondary" id="poligon-selector-btn"><i class="fas fa-draw-polygon"></i></button>
+            </div>
+            <select name="area" id="area-select" class="form-select w-100">
+                <option value="-1" selected>Izberi območje</option>
+            </select>
+            <div class="row mx-0 btm-container mt-4">
                 <button class="btn btn-outline-primary">Ponastvai</button>
                 <button class="btn btn-outline-success">Uporabi</button>
             </div>
