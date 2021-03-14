@@ -90,15 +90,22 @@
             toggleToolsMenu();
         });
 
-        $("#bird-select").select2({
-           data: [{
-               id: 0,
-               text: "lalala"
-           }, {
-               id: 1,
-               text: "Muh muh"
-           }]
-        });
+        $.ajax({
+            url: "/bird/getAll",
+        }).done(function (data) {
+            var dataForSelect = [];
+            data.forEach(function (obj) {
+                var tmpObj = {
+                    id: obj.birdID,
+                    text: obj.name
+                };
+                dataForSelect.push(tmpObj);
+            })
+
+            $("#bird-select").select2({
+                data: dataForSelect
+            });
+        })
 
         $("#area-select").select2({
             data: [{

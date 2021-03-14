@@ -1,5 +1,6 @@
 package com.sbm.slovenianbirdmap.dao;
 
+import com.sbm.slovenianbirdmap.sql.BirdSQL;
 import com.sbm.slovenianbirdmap.sql.TestModelSQL;
 import com.sbm.slovenianbirdmap.sql.UserSQL;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,9 @@ public class AbstractDao {
 
     @Autowired
     protected UserSQL userSQL;
+
+    @Autowired
+    protected BirdSQL birdSQL;
 
     @Autowired
     protected JdbcTemplate jdbcTemplate;
