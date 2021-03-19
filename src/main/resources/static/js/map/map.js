@@ -12,6 +12,8 @@
     exports.init = function () {
         console.log("Map component init...");
         initMap();
+        NewObservationComponent.init();
+        AnalyzerComponent.init();
     }
 
     exports.closeSearchResults = function() {
@@ -64,6 +66,16 @@
             layers: [
                 new ol.layer.Tile({
                     source: new ol.source.OSM()
+                }),
+                new ol.layer.Tile({
+                    source: new ol.source.TileWMS({
+                        url: "http://83.212.82.148:8080/geoserver/slovenian-bird-map/wms",
+                        params: {
+                            'LAYERS': 'slovenian-bird-map:observations',
+                            'TILED': true,
+                            'CRS': 3857
+                        }
+                    })
                 })
             ],
             view: new ol.View({
@@ -73,6 +85,17 @@
                 maxZoom: mapMaxZoom
             }),
             controls: ol.control.defaults().extend([mousePositionControl])
+        });
+
+        MapComponent.map.on("singleclick", function (e) {
+            if (NewObservationComponent.canSelectLocation) {
+                var coordinate = ol.proj.transform(e.coordinate, 'EPSG:3857', 'EPSG:4326');
+                NewObservationComponent.selectedLocation = {
+                    lon: coordinate[0],
+                    lat: coordinate[1]
+                }
+                NewObservationComponent.toggleLocationSelector();
+            }
         });
 
         $(".ol-attribution").hide();
@@ -102,10 +125,10 @@
                 dataForSelect.push(tmpObj);
             })
 
-            $("#bird-select").select2({
+            $("#bird-select-new-observation").select2({
                 data: dataForSelect
             });
-        })
+        });
 
         $("#area-select").select2({
             data: [{

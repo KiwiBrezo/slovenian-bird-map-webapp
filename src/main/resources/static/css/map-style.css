@@ -239,3 +239,8 @@
     width: 95px;
     margin-left: auto;
 }
+
+#add-observation-location-selector.activate {
+    color: #fff;
+    background-color: #28a745;
+}

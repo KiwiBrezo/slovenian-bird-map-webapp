@@ -19,9 +19,9 @@
     </div>
 </div>
 
-<div class="user-container">
+<div class="user-container" data-userID="${userID}">
     <div class="user-container-header">
-        <span>Ime usera</span>
+        <span>${userName}</span>
         <span class="float-right">
             <i class="fas fa-caret-down cursor-pointer user-menu-btn"></i>
         </span>
@@ -77,18 +77,18 @@
     <div class="container-body">
         <div class="add-observation-container mx-0 w-100">
             <span class="row mx-0 mb-2 title-text">Dodaj opazovanje:</span>
-            <select name="bird" id="bird-select" class="form-select w-100 my-1">
+            <select name="bird" id="bird-select-new-observation" class="form-select w-100 my-1">
                 <option value="-1" selected>Izberi opazovano ptico</option>
             </select>
             <div class="row mx-0 my-1">
-                <input type="text" class="form-control col-8" id="observation-comment" placeholder="Komentar...">
+                <input type="text" class="form-control col-8" id="new-observation-comment" placeholder="Komentar...">
                 <input type="number" class="form-control" id="observation-number" placeholder="Kol.">
             </div>
             <div class="row mx-0">
-                <input class="form-control col-8" type="date">
-                <button class="btn btn-outline-success" id="add-observation-location-selector"><i class="fas fa-map-marker-alt"></i></button>
+                <input class="form-control col-8" type="date" id="new-observation-date">
+                <button class="btn btn-outline-success" id="add-observation-location-selector" onclick="NewObservationComponent.toggleLocationSelector()"><i class="fas fa-map-marker-alt"></i></button>
             </div>
-            <button class="btn btn-primary w-100 mt-2">Dodaj</button>
+            <button class="btn btn-primary w-100 mt-2" onclick="NewObservationComponent.addNewObservation()">Dodaj</button>
         </div>
 
         <div class="analiyze-data-container mx-0">

@@ -10,13 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/map")
-public class MapController {
+public class MapController extends AbstractController {
     @GetMapping("/")
     public String getMapView(@CookieValue(value = "userRole", defaultValue = "none") String userRole,
                              @CookieValue(value = "userEmail", defaultValue = "none") String userEmail,
                              Model model) {
         //if (userRole.equals("user") || userRole.equals("admin")) {
         if (true) {
+            model.addAttribute(JspModelAttributes.USER_NAME, userDao.getUserName(userEmail));
+            model.addAttribute(JspModelAttributes.USER_ID, userDao.getUserID(userEmail));
             model.addAttribute(JspModelAttributes.VIEW_BODY, PageNames.MAP_PAGE);
             return PageNames.INDEX_PAGE;
         }

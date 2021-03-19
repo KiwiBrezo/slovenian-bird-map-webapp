@@ -51,4 +51,22 @@ public class UserDao extends AbstractDao{
 
         return namedParameterJdbcTemplate.queryForObject(sql, params, String.class);
     }
+
+    public String getUserName(String email) {
+        String sql = userSQL.getGetUserName();
+
+        SqlParameterSource params = new MapSqlParameterSource()
+                .addValue("email", email);
+
+        return namedParameterJdbcTemplate.queryForObject(sql, params, String.class);
+    }
+
+    public Long getUserID(String email) {
+        String sql = userSQL.getGetUserID();
+
+        SqlParameterSource params = new MapSqlParameterSource()
+                .addValue("email", email);
+
+        return namedParameterJdbcTemplate.queryForObject(sql, params, Long.class);
+    }
 }

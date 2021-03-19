@@ -20,6 +20,20 @@ public class UserSQL {
     @Value("${user.login.webapp.role}")
     private String loginUserRole;
 
+    @Value("${user.get.name}")
+    private String getUserName;
+
+    @Value("${user.get.userID}")
+    private String getUserID;
+
+    public String getGetUserName() {
+        return getUserName;
+    }
+
+    public String getGetUserID() {
+        return getUserID;
+    }
+
     public String getLoginUserInWebapp() {
         return loginUserInWebapp;
     }
