@@ -19,6 +19,18 @@
     }
 
     exports.addNewObservation = function () {
+        if ($("#bird-select-new-observation").find(":selected").val() < 0) {
+            return;
+        }
+        if ($(".user-container").data("userid") == null || $(".user-container").data("userid") == undefined) {
+            return;
+        }
+        if($("#new-observation-date").val() == null || $("#new-observation-date").val() == undefined) {
+            return;
+        }
+        if(exports.selectedLocation == null) {
+            return;
+        }
         $.ajax({
             url: "/api/addObservation",
             method: "post",
@@ -31,8 +43,16 @@
                 date: $("#new-observation-date").val()
             }
         }).done(function (response) {
-            console.log(response)
-        })
+            console.log(response);
+            resetValues();
+        });
+    }
+
+    function resetValues() {
+        exports.selectedLocation = null;
+        $("#new-observation-comment").val(null);
+        $("#new-observation-date").val(null);
+        $("#bird-select-new-observation").val(-1).trigger("change");
     }
 
 

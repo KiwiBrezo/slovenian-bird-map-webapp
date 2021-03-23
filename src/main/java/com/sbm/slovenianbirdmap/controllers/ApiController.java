@@ -1,7 +1,9 @@
 package com.sbm.slovenianbirdmap.controllers;
 
+import com.sbm.slovenianbirdmap.models.ObservationModel;
 import com.sbm.slovenianbirdmap.models.TestModel;
 import com.sbm.slovenianbirdmap.models.form.ObservationForm;
+import com.sbm.slovenianbirdmap.models.form.SearchObservationForm;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -36,5 +38,12 @@ public class ApiController extends AbstractController {
             return new ResponseEntity<Object>("NOT OK", HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<Object>("OK", HttpStatus.OK);
+    }
+
+    @CrossOrigin("*")
+    @GetMapping("/searchObservation")
+    public ResponseEntity<Object> searchObservationByTerm(@ModelAttribute SearchObservationForm searchObservationForm) {
+        List<ObservationModel> list = observationDao.getObservationByTerm(searchObservationForm);
+        return new ResponseEntity<Object>(list, HttpStatus.OK);
     }
 }

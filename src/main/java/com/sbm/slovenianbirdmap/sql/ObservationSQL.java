@@ -10,6 +10,13 @@ public class ObservationSQL {
     @Value("${add.new.observation}")
     private String addNewObservation;
 
+    @Value("${search.observation.by.term}")
+    private String searchObservationByTerm;
+
+    public String getSearchObservationByTerm() {
+        return searchObservationByTerm;
+    }
+
     public String getAddNewObservation() {
         return addNewObservation;
     }

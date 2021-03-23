@@ -14,6 +14,7 @@
         initMap();
         NewObservationComponent.init();
         AnalyzerComponent.init();
+        SearchComponent.init();
     }
 
     exports.closeSearchResults = function() {

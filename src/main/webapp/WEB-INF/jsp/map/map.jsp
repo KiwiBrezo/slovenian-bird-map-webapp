@@ -48,9 +48,9 @@
 
 <div class="search-field-container">
     <div class="input-group main-search">
-        <input type="text" class="form-control" placeholder="Slo. ali lat. ime ptice" aria-label="Slo. ali lat. ime ptice">
+        <input type="text" class="form-control" id="search-observation-input" placeholder="Slo. ali lat. ime ptice" aria-label="Slo. ali lat. ime ptice">
         <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button"><i class="fas fa-lg fa-search cursor-pointer"></i></button>
+            <button class="btn btn-outline-secondary" type="button" onclick="SearchComponent.searchObservations()"><i class="fas fa-lg fa-search cursor-pointer"></i></button>
         </div>
     </div>
 </div>

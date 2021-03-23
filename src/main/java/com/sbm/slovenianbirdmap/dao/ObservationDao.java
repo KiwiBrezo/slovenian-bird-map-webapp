@@ -1,12 +1,16 @@
 package com.sbm.slovenianbirdmap.dao;
 
+import com.sbm.slovenianbirdmap.dao.mappers.ObservationModelMapper;
+import com.sbm.slovenianbirdmap.models.ObservationModel;
 import com.sbm.slovenianbirdmap.models.form.ObservationForm;
+import com.sbm.slovenianbirdmap.models.form.SearchObservationForm;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class ObservationDao extends AbstractDao{
@@ -33,5 +37,15 @@ public class ObservationDao extends AbstractDao{
             e.printStackTrace();
             return false;
         }
+    }
+
+    public List<ObservationModel> getObservationByTerm(SearchObservationForm searchObservationForm) {
+        String sql = observationSQL.getSearchObservationByTerm();
+
+        SqlParameterSource params = new MapSqlParameterSource()
+                .addValue("name", "%" + searchObservationForm.getTerm().toLowerCase() + "%")
+                .addValue("nameLat", "%" + searchObservationForm.getTerm().toLowerCase() + "%");
+
+        return namedParameterJdbcTemplate.query(sql, params, new ObservationModelMapper());
     }
 }

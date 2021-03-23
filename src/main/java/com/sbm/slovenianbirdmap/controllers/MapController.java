@@ -15,8 +15,7 @@ public class MapController extends AbstractController {
     public String getMapView(@CookieValue(value = "userRole", defaultValue = "none") String userRole,
                              @CookieValue(value = "userEmail", defaultValue = "none") String userEmail,
                              Model model) {
-        //if (userRole.equals("user") || userRole.equals("admin")) {
-        if (true) {
+        if (userRole.equals("user") || userRole.equals("admin")) {
             model.addAttribute(JspModelAttributes.USER_NAME, userDao.getUserName(userEmail));
             model.addAttribute(JspModelAttributes.USER_ID, userDao.getUserID(userEmail));
             model.addAttribute(JspModelAttributes.VIEW_BODY, PageNames.MAP_PAGE);
