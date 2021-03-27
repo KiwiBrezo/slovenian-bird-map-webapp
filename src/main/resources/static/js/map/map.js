@@ -7,6 +7,8 @@
 
     var mousePositionControl;
 
+    exports.OBSERVATION_LAYER = "observation_layer";
+
     exports.map = null;
 
     exports.init = function () {
@@ -18,8 +20,57 @@
     }
 
     exports.closeSearchResults = function() {
+        MapComponent.removeLayer(MapComponent.OBSERVATION_LAYER);
+        SearchComponent.setCqlFilterAttribute("");
+
         $('.search-result-container').hide();
         $('.search-result-container .container-body').empty();
+    }
+
+    exports.addNewLayer = function(params, layerName) {
+        var newLayer = new ol.layer.Tile({
+            source: new ol.source.TileWMS({
+                url: "http://83.212.82.148:8080/geoserver/slovenian-bird-map/wms",
+                params: params || {}
+            }),
+            name: layerName
+        });
+
+        MapComponent.map.addLayer(newLayer);
+    }
+
+    exports.removeLayer = function(layerName) {
+        MapComponent.map.getLayers().forEach(function (layer) {
+            if (layer.get("name") === layerName) {
+                MapComponent.map.removeLayer(layer);
+            }
+        });
+    }
+
+    exports.addTestLayer = function () {
+        console.log(exports.map.getSize());
+        console.log(exports.map.getView().calculateExtent(exports.map.getSize()));
+
+        var testParams = {
+            "REQUEST": "GetMap",
+            "SERVICE": "WMS",
+            "VERSION": "1.3.0",
+            "LAYERS": "slovenian-bird-map:observations",
+            "CRS": 3857,
+            "WIDTH": exports.map.getSize()[0],
+            "HEIGHT": exports.map.getSize()[1],
+            "BBOX": exports.map.getView().calculateExtent(exports.map.getSize()).toString(),
+            "FORMAT": "image/png",
+            "CQL_FILTER": "bird_id=24"
+        };
+
+        var name = "TestLayer";
+
+        MapComponent.addNewLayer(testParams, name);
+    }
+
+    exports.removeTestLayer = function () {
+        MapComponent.removeLayer("TestLayer");
     }
 
     function toggleUserMenu() {
@@ -67,16 +118,6 @@
             layers: [
                 new ol.layer.Tile({
                     source: new ol.source.OSM()
-                }),
-                new ol.layer.Tile({
-                    source: new ol.source.TileWMS({
-                        url: "http://83.212.82.148:8080/geoserver/slovenian-bird-map/wms",
-                        params: {
-                            'LAYERS': 'slovenian-bird-map:observations',
-                            'TILED': true,
-                            'CRS': 3857
-                        }
-                    })
                 })
             ],
             view: new ol.View({

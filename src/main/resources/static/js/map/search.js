@@ -10,6 +10,9 @@
             return;
         }
 
+        MapComponent.removeLayer(MapComponent.OBSERVATION_LAYER);
+        SearchComponent.setCqlFilterAttribute("");
+
         $.ajax({
             url: "/api/searchObservation",
             method: "get",
@@ -19,6 +22,7 @@
         }).done(function (response) {
             $(".search-result-container .container-body").empty();
             if ((response.length || []) > 0) {
+                var birdIDs = [];
                 $.each(response || [], function (index, observation) {
                     var rowElement = $("<div>").addClass("result-info-container").append($("<div>")
                             .addClass("row first-row"))
@@ -46,7 +50,12 @@
                             .addClass("fas fa-info-circle cursor-pointer")));
 
                     $(".search-result-container .container-body").append(rowElement);
+
+                    if (!birdIDs.includes(observation.birdID)) {
+                        birdIDs.push(observation.birdID);
+                    }
                 })
+                loadObservationLayer(birdIDs);
             } else {
                 $(".search-result-container .container-body").append($("<p>").text("Ni bil najden noben zadetek!"));
             }
@@ -54,5 +63,33 @@
         });
     }
 
+    exports.setCqlFilterAttribute = function(cqlFilter) {
+        $(".search-result-container").attr("data-cqlfilter", cqlFilter);
+    }
+
+    function loadObservationLayer(birdIDs) {
+        var cqlFilter = "";
+        $.each(birdIDs || [], function (index, id) {
+            cqlFilter += "bird_id=" + id + " or ";
+        });
+        cqlFilter = cqlFilter.slice(0, -4);
+
+        SearchComponent.setCqlFilterAttribute(cqlFilter);
+
+        if (cqlFilter !== "") {
+            MapComponent.addNewLayer({
+                "REQUEST": "GetMap",
+                "SERVICE": "WMS",
+                "VERSION": "1.3.0",
+                "LAYERS": "slovenian-bird-map:observations",
+                "CRS": 3857,
+                "WIDTH": MapComponent.map.getSize()[0],
+                "HEIGHT": MapComponent.map.getSize()[1],
+                "BBOX": MapComponent.map.getView().calculateExtent(MapComponent.map.getSize()).toString(),
+                "FORMAT": "image/png",
+                "CQL_FILTER": cqlFilter
+            }, MapComponent.OBSERVATION_LAYER);
+        }
+    }
 
 })(SearchComponent = {});

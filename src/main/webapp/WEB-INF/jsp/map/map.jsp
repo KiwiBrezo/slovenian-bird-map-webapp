@@ -55,7 +55,7 @@
     </div>
 </div>
 
-<div class="search-result-container">
+<div class="search-result-container" data-cqlfilter="">
     <div class="container-header">
         <span>Rezultat iskanja:</span>
         <span class="float-right">
@@ -119,8 +119,8 @@
                 <option value="-1" selected>Izberi območje</option>
             </select>
             <div class="row mx-0 btm-container mt-4">
-                <button class="btn btn-outline-primary">Ponastvai</button>
-                <button class="btn btn-outline-success">Uporabi</button>
+                <button class="btn btn-outline-primary" onclick="MapComponent.removeTestLayer()">Ponastvai</button>
+                <button class="btn btn-outline-success" onclick="MapComponent.addTestLayer()">Uporabi</button>
             </div>
         </div>
     </div>
