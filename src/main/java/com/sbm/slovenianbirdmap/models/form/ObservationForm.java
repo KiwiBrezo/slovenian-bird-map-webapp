@@ -7,6 +7,7 @@ public class ObservationForm {
     private String lon;
     private String lat;
     private String date;
+    private Integer col;
 
     public Integer getBirdID() {
         return birdID;
@@ -55,4 +56,8 @@ public class ObservationForm {
     public void setDate(String date) {
         this.date = date;
     }
+
+    public Integer getCol() { return col; }
+
+    public void setCol(Integer col) { this.col = col; }
 }

@@ -28,6 +28,9 @@
         if($("#new-observation-date").val() == null || $("#new-observation-date").val() == undefined) {
             return;
         }
+        if ($("#observation-number").val() == null || $("#observation-number").val() <= 0) {
+            return;
+        }
         if(exports.selectedLocation == null) {
             return;
         }
@@ -40,10 +43,10 @@
                 comment: $("#new-observation-comment").val(),
                 lon: exports.selectedLocation.lon,
                 lat: exports.selectedLocation.lat,
-                date: $("#new-observation-date").val()
+                date: $("#new-observation-date").val(),
+                col: $("#observation-number").val()
             }
         }).done(function (response) {
-            console.log(response);
             resetValues();
         });
     }
@@ -53,6 +56,7 @@
         $("#new-observation-comment").val(null);
         $("#new-observation-date").val(null);
         $("#bird-select-new-observation").val(-1).trigger("change");
+        $("#observation-number").val(1);
     }
 
 

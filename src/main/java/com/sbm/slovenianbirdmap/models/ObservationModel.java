@@ -12,15 +12,9 @@ public class ObservationModel {
     private String birdName;
     private String userName;
     private String userSurname;
+    private Integer col;
 
-    public void setUserSurname(String userSurname) {
-        this.userSurname = userSurname;
-    }
-
-    public ObservationModel() {
-    }
-
-    public ObservationModel(Integer observationID, Integer birdID, Integer userID, String comment, String geom, Date date, String birdName, String userName, String userSurname) {
+    public ObservationModel(Integer observationID, Integer birdID, Integer userID, String comment, String geom, Date date, String birdName, String userName, String userSurname, Integer col) {
         this.observationID = observationID;
         this.birdID = birdID;
         this.userID = userID;
@@ -30,11 +24,13 @@ public class ObservationModel {
         this.birdName = birdName;
         this.userName = userName;
         this.userSurname = userSurname;
+        this.col = col;
     }
 
-    public Integer getObservationID() {
-        return observationID;
+    public ObservationModel() {
     }
+
+    public Integer getObservationID() { return observationID; }
 
     public void setObservationID(Integer observationID) {
         this.observationID = observationID;
@@ -96,7 +92,15 @@ public class ObservationModel {
         this.userName = userName;
     }
 
+    public void setUserSurname(String userSurname) {
+        this.userSurname = userSurname;
+    }
+
     public String getUserSurname() {
         return userSurname;
     }
+
+    public Integer getCol() { return col; }
+
+    public void setCol(Integer col) { this.col = col; }
 }

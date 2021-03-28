@@ -26,13 +26,16 @@ public class UserSQL {
     @Value("${user.get.userID}")
     private String getUserID;
 
+    @Value("${user.check.user.mobile.token}")
+    private String checkUserMobile;
+
+    public String getCheckUserMobile() { return checkUserMobile; }
+
     public String getGetUserName() {
         return getUserName;
     }
 
-    public String getGetUserID() {
-        return getUserID;
-    }
+    public String getGetUserID() { return getUserID; }
 
     public String getLoginUserInWebapp() {
         return loginUserInWebapp;

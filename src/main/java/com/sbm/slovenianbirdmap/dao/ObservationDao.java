@@ -2,6 +2,7 @@ package com.sbm.slovenianbirdmap.dao;
 
 import com.sbm.slovenianbirdmap.dao.mappers.ObservationModelMapper;
 import com.sbm.slovenianbirdmap.models.ObservationModel;
+import com.sbm.slovenianbirdmap.models.form.GetObservationsUserForm;
 import com.sbm.slovenianbirdmap.models.form.ObservationForm;
 import com.sbm.slovenianbirdmap.models.form.SearchObservationForm;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -28,7 +29,8 @@ public class ObservationDao extends AbstractDao{
                     .addValue("bird_id", observationForm.getBirdID())
                     .addValue("user_id", observationForm.getUserID())
                     .addValue("comment", observationForm.getComment())
-                    .addValue("date", date);
+                    .addValue("date", date)
+                    .addValue("col", observationForm.getCol());
 
             namedParameterJdbcTemplate.update(sql, params);
 
@@ -47,5 +49,24 @@ public class ObservationDao extends AbstractDao{
                 .addValue("nameLat", "%" + searchObservationForm.getTerm().toLowerCase() + "%");
 
         return namedParameterJdbcTemplate.query(sql, params, new ObservationModelMapper());
+    }
+
+    public List<ObservationModel> getObservationForUser(GetObservationsUserForm getObservationsUserForm) {
+        String sql = observationSQL.getGetObservationsForUser();
+
+        SqlParameterSource params = new MapSqlParameterSource()
+                .addValue("id", getObservationsUserForm.getUserID());
+
+        return namedParameterJdbcTemplate.query(sql, params, new ObservationModelMapper());
+    }
+
+    public List<Integer> getObservationDistinctBirdIDs(SearchObservationForm searchObservationForm) {
+        String sql = observationSQL.getSearchObservationDIstinctBirdIDs();
+
+        SqlParameterSource params = new MapSqlParameterSource()
+                .addValue("name", "%" + searchObservationForm.getTerm().toLowerCase() + "%")
+                .addValue("nameLat", "%" + searchObservationForm.getTerm().toLowerCase() + "%");
+
+        return namedParameterJdbcTemplate.queryForList(sql, params, Integer.class);
     }
 }

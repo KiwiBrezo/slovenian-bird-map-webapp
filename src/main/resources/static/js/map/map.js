@@ -21,7 +21,7 @@
 
     exports.closeSearchResults = function() {
         MapComponent.removeLayer(MapComponent.OBSERVATION_LAYER);
-        SearchComponent.setCqlFilterAttribute("");
+        SearchComponent.cqlFilter = "";
 
         $('.search-result-container').hide();
         $('.search-result-container .container-body').empty();

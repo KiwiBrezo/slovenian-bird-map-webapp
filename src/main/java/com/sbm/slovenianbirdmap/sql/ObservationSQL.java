@@ -13,9 +13,17 @@ public class ObservationSQL {
     @Value("${search.observation.by.term}")
     private String searchObservationByTerm;
 
-    public String getSearchObservationByTerm() {
-        return searchObservationByTerm;
-    }
+    @Value("${search.observation.distinct.bird.ids}")
+    private String searchObservationDIstinctBirdIDs;
+
+    @Value("${get.observation.for.user}")
+    private String getObservationsForUser;
+
+    public String getGetObservationsForUser() { return getObservationsForUser; }
+
+    public String getSearchObservationDIstinctBirdIDs() { return searchObservationDIstinctBirdIDs; }
+
+    public String getSearchObservationByTerm() { return searchObservationByTerm; }
 
     public String getAddNewObservation() {
         return addNewObservation;

@@ -55,7 +55,7 @@
     </div>
 </div>
 
-<div class="search-result-container" data-cqlfilter="">
+<div class="search-result-container">
     <div class="container-header">
         <span>Rezultat iskanja:</span>
         <span class="float-right">
@@ -82,7 +82,7 @@
             </select>
             <div class="row mx-0 my-1">
                 <input type="text" class="form-control col-8" id="new-observation-comment" placeholder="Komentar...">
-                <input type="number" class="form-control" id="observation-number" placeholder="Kol.">
+                <input type="number" class="form-control" id="observation-number" value="1" placeholder="Kol.">
             </div>
             <div class="row mx-0">
                 <input class="form-control col-8" type="date" id="new-observation-date">

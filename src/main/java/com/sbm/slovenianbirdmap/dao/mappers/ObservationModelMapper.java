@@ -20,6 +20,7 @@ public class ObservationModelMapper implements RowMapper<ObservationModel> {
         observationModel.setBirdName(resultSet.getString("bird_name"));
         observationModel.setUserName(resultSet.getString("user_name"));
         observationModel.setUserSurname(resultSet.getString("user_surname"));
+        observationModel.setCol(resultSet.getInt("col"));
 
         return observationModel;
     }

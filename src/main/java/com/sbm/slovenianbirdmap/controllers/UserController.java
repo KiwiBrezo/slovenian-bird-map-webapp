@@ -45,19 +45,26 @@ public class UserController extends AbstractController {
 
     @PostMapping("/login")
     public String loginUser(HttpServletResponse response, Model model, @ModelAttribute LoginForm loginForm) {
-        if (userDao.loginUserWebapp(loginForm)) {
-            Cookie cookieRole = new Cookie("userRole", userDao.getUserRole(loginForm));
-            cookieRole.setMaxAge(60 * 60);
-            cookieRole.setHttpOnly(true);
-            cookieRole.setPath("/");
-            response.addCookie(cookieRole);
-            Cookie cookieUserID = new Cookie("userEmail", loginForm.getEmail());
-            cookieUserID.setMaxAge(60 * 60);
-            cookieUserID.setHttpOnly(true);
-            cookieUserID.setPath("/");
-            response.addCookie(cookieUserID);
-            return "redirect:/map/";
-        } else {
+        try {
+            if (userDao.loginUserWebapp(loginForm)) {
+                Cookie cookieRole = new Cookie("userRole", userDao.getUserRole(loginForm));
+                cookieRole.setMaxAge(60 * 60);
+                cookieRole.setHttpOnly(true);
+                cookieRole.setPath("/");
+                response.addCookie(cookieRole);
+                Cookie cookieUserID = new Cookie("userEmail", loginForm.getEmail());
+                cookieUserID.setMaxAge(60 * 60);
+                cookieUserID.setHttpOnly(true);
+                cookieUserID.setPath("/");
+                response.addCookie(cookieUserID);
+                return "redirect:/map/";
+            } else {
+                model.addAttribute(JspModelAttributes.ERROR_MSG, loginErrMsg);
+                model.addAttribute(JspModelAttributes.VIEW_BODY, PageNames.USER_LOGIN_PAGE);
+                return PageNames.INDEX_PAGE;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
             model.addAttribute(JspModelAttributes.ERROR_MSG, loginErrMsg);
             model.addAttribute(JspModelAttributes.VIEW_BODY, PageNames.USER_LOGIN_PAGE);
             return PageNames.INDEX_PAGE;

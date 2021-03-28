@@ -1,5 +1,7 @@
 (function (exports) {
 
+    exports.cqlFilter = "";
+
 
     exports.init = function () {
         console.log("Search component init...");
@@ -11,7 +13,19 @@
         }
 
         MapComponent.removeLayer(MapComponent.OBSERVATION_LAYER);
-        SearchComponent.setCqlFilterAttribute("");
+        SearchComponent.cqlFilter = "";
+
+        $.ajax({
+            url: "/api/searchObservationDistinctBirdIDs",
+            method: "get",
+            data: {
+                term: $("#search-observation-input").val()
+            }
+        }).done(function (response) {
+            if (response != null && response.length > 0) {
+                loadObservationLayer(response);
+            }
+        });
 
         $.ajax({
             url: "/api/searchObservation",
@@ -22,7 +36,7 @@
         }).done(function (response) {
             $(".search-result-container .container-body").empty();
             if ((response.length || []) > 0) {
-                var birdIDs = [];
+                console.log(response);
                 $.each(response || [], function (index, observation) {
                     var rowElement = $("<div>").addClass("result-info-container").append($("<div>")
                             .addClass("row first-row"))
@@ -50,21 +64,12 @@
                             .addClass("fas fa-info-circle cursor-pointer")));
 
                     $(".search-result-container .container-body").append(rowElement);
-
-                    if (!birdIDs.includes(observation.birdID)) {
-                        birdIDs.push(observation.birdID);
-                    }
                 })
-                loadObservationLayer(birdIDs);
             } else {
                 $(".search-result-container .container-body").append($("<p>").text("Ni bil najden noben zadetek!"));
             }
             $(".search-result-container").show();
         });
-    }
-
-    exports.setCqlFilterAttribute = function(cqlFilter) {
-        $(".search-result-container").attr("data-cqlfilter", cqlFilter);
     }
 
     function loadObservationLayer(birdIDs) {
@@ -74,7 +79,7 @@
         });
         cqlFilter = cqlFilter.slice(0, -4);
 
-        SearchComponent.setCqlFilterAttribute(cqlFilter);
+        SearchComponent.cqlFilter = cqlFilter;
 
         if (cqlFilter !== "") {
             MapComponent.addNewLayer({

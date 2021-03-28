@@ -69,4 +69,14 @@ public class UserDao extends AbstractDao{
 
         return namedParameterJdbcTemplate.queryForObject(sql, params, Long.class);
     }
+
+    public Boolean checkUserMobileToken(Integer userID, String mobileToken) {
+        String sql = userSQL.getCheckUserMobile();
+
+        SqlParameterSource params = new MapSqlParameterSource()
+                .addValue("id", userID)
+                .addValue("token", mobileToken);
+
+        return namedParameterJdbcTemplate.queryForObject(sql, params, Boolean.class);
+    }
 }

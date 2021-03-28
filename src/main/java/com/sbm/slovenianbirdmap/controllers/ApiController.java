@@ -2,6 +2,7 @@ package com.sbm.slovenianbirdmap.controllers;
 
 import com.sbm.slovenianbirdmap.models.ObservationModel;
 import com.sbm.slovenianbirdmap.models.TestModel;
+import com.sbm.slovenianbirdmap.models.form.GetObservationsUserForm;
 import com.sbm.slovenianbirdmap.models.form.ObservationForm;
 import com.sbm.slovenianbirdmap.models.form.SearchObservationForm;
 import org.springframework.http.HttpStatus;
@@ -45,5 +46,28 @@ public class ApiController extends AbstractController {
     public ResponseEntity<Object> searchObservationByTerm(@ModelAttribute SearchObservationForm searchObservationForm) {
         List<ObservationModel> list = observationDao.getObservationByTerm(searchObservationForm);
         return new ResponseEntity<Object>(list, HttpStatus.OK);
+    }
+
+    @CrossOrigin("*")
+    @GetMapping("/searchObservationDistinctBirdIDs")
+    public ResponseEntity<Object> searchObservationDistinctBirdIDs(@ModelAttribute SearchObservationForm searchObservationForm) {
+        List<Integer> list = observationDao.getObservationDistinctBirdIDs(searchObservationForm);
+        return new ResponseEntity<Object>(list, HttpStatus.OK);
+    }
+
+    @CrossOrigin("*")
+    @GetMapping("/mobile/getObservationForUser")
+    public ResponseEntity<Object> getObservationForUser(@ModelAttribute GetObservationsUserForm getObservationsUserForm) {
+        try {
+            if (userDao.checkUserMobileToken(getObservationsUserForm.getUserID(), getObservationsUserForm.getMobileToken())) {
+                List<ObservationModel> list = observationDao.getObservationForUser(getObservationsUserForm);
+                return new ResponseEntity<Object>(list, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<Object>("PROBLEMS WITH TOKEN", HttpStatus.BAD_REQUEST);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<Object>("PROBLEMS WITH USER_ID", HttpStatus.BAD_REQUEST);
+        }
     }
 }
