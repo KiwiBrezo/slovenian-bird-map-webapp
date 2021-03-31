@@ -70,4 +70,10 @@ public class ApiController extends AbstractController {
             return new ResponseEntity<Object>("PROBLEMS WITH USER_ID", HttpStatus.BAD_REQUEST);
         }
     }
+
+    @CrossOrigin("*")
+    @GetMapping("/mobile/getAllBirds")
+    public ResponseEntity<Object> getAllBirds() {
+        return new ResponseEntity<Object>(birdsDao.getAllBird(), HttpStatus.OK);
+    }
 }

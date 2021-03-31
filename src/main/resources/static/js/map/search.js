@@ -36,7 +36,6 @@
         }).done(function (response) {
             $(".search-result-container .container-body").empty();
             if ((response.length || []) > 0) {
-                console.log(response);
                 $.each(response || [], function (index, observation) {
                     var rowElement = $("<div>").addClass("result-info-container").append($("<div>")
                             .addClass("row first-row"))
