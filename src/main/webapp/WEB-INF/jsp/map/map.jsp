@@ -67,6 +67,19 @@
     </div>
 </div>
 
+<div class="observation-info-container" style="display: none">
+    <div class="container-header">
+        <span>Podrobnosti opazovanja:</span>
+        <span class="float-right drag-handle">
+            <i class="fas fa-arrows-alt cursor-pointer"></i>
+            <i class="fas fa-times cursor-pointer" onclick="MapComponent.closeObservationInfo()"></i>
+        </span>
+    </div>
+    <div class="container-body">
+
+    </div>
+</div>
+
 <div class="tool-container">
     <div class="container-header">
         <span>Orodja:</span>

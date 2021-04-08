@@ -119,6 +119,17 @@
     height: 60%;
 }
 
+.observation-info-container {
+    background-color: rgba(255, 255, 255, 0.85);
+    position: fixed;
+    top: 100px;
+    right: 375px;
+    height: 250px;
+    width: 350px;
+    border-radius: 15px;
+    border: 1px solid #87986a;
+}
+
 .tool-btn-container.activate {
     background-color: #718355 !important;
     color: white !important;

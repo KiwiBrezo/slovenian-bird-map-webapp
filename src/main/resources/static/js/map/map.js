@@ -27,6 +27,14 @@
         $('.search-result-container .container-body').empty();
     }
 
+    exports.showObservationInfo = function() {
+        $('.observation-info-container').show();
+    }
+
+    exports.closeObservationInfo = function() {
+        $('.observation-info-container').hide();
+    }
+
     exports.addNewLayer = function(params, layerName) {
         var newLayer = new ol.layer.Tile({
             source: new ol.source.TileWMS({
@@ -149,6 +157,11 @@
         $(".tool-container").draggable({
             containment: $("#map"),
             handle: $(".tool-container .drag-handle")
+        });
+
+        $(".observation-info-container").draggable({
+            containment: $("#map"),
+            handle: $(".observation-info-container .drag-handle")
         });
 
         $(".tool-btn-container").click(function () {

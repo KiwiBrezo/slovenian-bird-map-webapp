@@ -60,7 +60,8 @@
                         .addClass("col-3")
                         .css("text-align", "end")
                         .append($("<i>")
-                            .addClass("fas fa-info-circle cursor-pointer")));
+                            .addClass("fas fa-info-circle cursor-pointer"))
+                        .click(MapComponent.showObservationInfo));
 
                     $(".search-result-container .container-body").append(rowElement);
                 })
