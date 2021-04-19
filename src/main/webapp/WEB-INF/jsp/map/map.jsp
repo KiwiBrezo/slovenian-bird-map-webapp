@@ -76,7 +76,21 @@
         </span>
     </div>
     <div class="container-body">
-
+        <h3 class="bird-name-title" id="birdNormalName"></h3>
+        <div class="row" style="margin-bottom: 4px">
+            <span class="col-7" id="userData"></span>
+            <span class="number-container" id="col"></span>
+        </div>
+        <div class="row" style="margin-bottom: 7px">
+            <span class="col-7 date-observation-conatiner" id="dateOfObservation"></span>
+            <button id="zoomToBtn" class="btn btn-success btn-zoom-to-location"><i class="fas fa-map-marked-alt"></i></button>
+        </div>
+        <div class="row observation-comment-container">
+            <p class="col-12">Komentar:</p>
+            <div class="col-12">
+                <h6 id="comment"></h6>
+            </div>
+        </div>
     </div>
 </div>
 

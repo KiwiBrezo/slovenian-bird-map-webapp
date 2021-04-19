@@ -5,6 +5,12 @@
 
     exports.init = function () {
         console.log("Search component init...");
+
+        $('#search-observation-input').keypress(function (e) {
+            if (e.which == 13) {
+                $(this).parent().find("button").trigger("click");
+            }
+        });
     }
 
     exports.searchObservations = function() {
@@ -61,7 +67,9 @@
                         .css("text-align", "end")
                         .append($("<i>")
                             .addClass("fas fa-info-circle cursor-pointer"))
-                        .click(MapComponent.showObservationInfo));
+                        .click(function() {
+                            MapComponent.showObservationInfo(observation)
+                        }));
 
                     $(".search-result-container .container-body").append(rowElement);
                 })
