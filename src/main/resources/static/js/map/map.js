@@ -9,6 +9,7 @@
 
     exports.OBSERVATION_LAYER = "observation_layer";
 
+    exports.newObservationMarkerLayer = null;
     exports.map = null;
 
     exports.init = function () {
@@ -17,6 +18,7 @@
         NewObservationComponent.init();
         AnalyzerComponent.init();
         SearchComponent.init();
+        NotificationComponent.init();
     }
 
     exports.closeSearchResults = function() {
@@ -151,8 +153,32 @@
                     lat: coordinate[1]
                 }
                 NewObservationComponent.toggleLocationSelector();
+
+                var marker = new ol.Feature(new ol.geom.Point(ol.proj.fromLonLat(coordinate)));
+                MapComponent.newObservationMarkerLayer.getSource().addFeature(marker);
             }
         });
+
+        MapComponent.newObservationMarkerLayer = new ol.layer.Vector({
+            source: new ol.source.Vector(),
+            style: new ol.style.Style({
+                image: new ol.style.RegularShape({
+                    fill: new ol.style.Fill({
+                        color: 'red'
+                    }),
+                    stroke: new ol.style.Stroke({
+                        color: 'black',
+                        width: 2
+                    }),
+                    points: 4,
+                    radius: 10,
+                    radius2: 0,
+                    angle: Math.PI / 4,
+                }),
+            })
+        });
+
+        MapComponent.map.addLayer(MapComponent.newObservationMarkerLayer);
 
         $(".ol-attribution").hide();
 

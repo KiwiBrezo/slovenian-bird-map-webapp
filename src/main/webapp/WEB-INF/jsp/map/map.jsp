@@ -94,6 +94,16 @@
     </div>
 </div>
 
+<div class="notification-container" style="display: none">
+    <div class="container-header">
+        <i class="fas fa-exclamation-circle"></i>
+        <span>Obvestilo:</span>
+    </div>
+    <div class="container-body">
+
+    </div>
+</div>
+
 <div class="tool-container">
     <div class="container-header">
         <span>Orodja:</span>
@@ -147,7 +157,7 @@
             </select>
             <div class="row mx-0 btm-container mt-4">
                 <button class="btn btn-outline-primary" onclick="MapComponent.removeTestLayer()">Ponastvai</button>
-                <button class="btn btn-outline-success" onclick="MapComponent.addTestLayer()">Uporabi</button>
+                <button class="btn btn-outline-success" onclick="NotificationComponent.showNotification('Test test test', NotificationComponent.SUCCESS)">Uporabi</button>
             </div>
         </div>
     </div>

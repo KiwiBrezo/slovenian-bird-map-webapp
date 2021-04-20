@@ -130,6 +130,19 @@
     border: 1px solid #87986a;
 }
 
+.notification-container {
+    background-color: rgba(255, 255, 255, 0.85);
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 780px;
+    width: 450px;
+    height: fit-content;
+    border-radius: 15px;
+    border: 1px solid #87986a;
+    z-index: 10;
+}
+
 .tool-btn-container.activate {
     background-color: #718355 !important;
     color: white !important;
@@ -357,4 +370,14 @@
     border-radius: 5px;
     padding: 4px;
     font-weight: normal;
+}
+
+.notification-container .container-body {
+    padding-right: 0px;
+    overflow-y: hidden;
+    background-color: rgba(255, 255, 255, 0.85);
+}
+
+.notification-container .container-body h4 {
+    background-color: rgba(255, 255, 255, 0.85);
 }
