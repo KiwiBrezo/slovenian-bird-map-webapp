@@ -46,7 +46,9 @@ public class ObservationDao extends AbstractDao{
 
         SqlParameterSource params = new MapSqlParameterSource()
                 .addValue("name", "%" + searchObservationForm.getTerm().toLowerCase() + "%")
-                .addValue("nameLat", "%" + searchObservationForm.getTerm().toLowerCase() + "%");
+                .addValue("nameLat", "%" + searchObservationForm.getTerm().toLowerCase() + "%")
+                .addValue("limit", searchObservationForm.getLimit())
+                .addValue("offset", searchObservationForm.getOffset());
 
         return namedParameterJdbcTemplate.query(sql, params, new ObservationModelMapper());
     }
