@@ -24,6 +24,7 @@
     exports.closeSearchResults = function() {
         MapComponent.removeLayer(MapComponent.OBSERVATION_LAYER);
         SearchComponent.cqlFilter = "";
+        AnalyzerComponent.advancedCqlFilter = "";
 
         $('.search-result-container').hide();
         $('.search-result-container .container-body').empty();
@@ -89,6 +90,52 @@
         MapComponent.removeLayer("TestLayer");
     }
 
+    exports.showObservationLayerHeatmap = function() {
+        if (SearchComponent.cqlFilter !== "") {
+            MapComponent.addNewLayer({
+                "REQUEST": "GetMap",
+                "SERVICE": "WMS",
+                "VERSION": "1.3.0",
+                "LAYERS": "slovenian-bird-map:observations_heatmap",
+                "CRS": 3857,
+                "WIDTH": MapComponent.map.getSize()[0],
+                "HEIGHT": MapComponent.map.getSize()[1],
+                "BBOX": MapComponent.map.getView().calculateExtent(MapComponent.map.getSize()).toString(),
+                "FORMAT": "image/png",
+                "CQL_FILTER": SearchComponent.cqlFilter + AnalyzerComponent.advancedCqlFilter
+            }, MapComponent.OBSERVATION_LAYER);
+        }
+    }
+
+    exports.loadObservationLayer = function(birdIDs) {
+        if (birdIDs != null) {
+            var cqlFilter = "";
+            $.each(birdIDs || [], function (index, id) {
+                cqlFilter += "bird_id=" + id + " or ";
+            });
+            cqlFilter = cqlFilter.slice(0, -4);
+
+            SearchComponent.cqlFilter = cqlFilter;
+        }
+
+        if (SearchComponent.cqlFilter !== "") {
+            MapComponent.addNewLayer({
+                "REQUEST": "GetMap",
+                "SERVICE": "WMS",
+                "VERSION": "1.3.0",
+                "LAYERS": "slovenian-bird-map:observations",
+                "CRS": 3857,
+                "WIDTH": MapComponent.map.getSize()[0],
+                "HEIGHT": MapComponent.map.getSize()[1],
+                "BBOX": MapComponent.map.getView().calculateExtent(MapComponent.map.getSize()).toString(),
+                "FORMAT": "image/png",
+                "CQL_FILTER": SearchComponent.cqlFilter + AnalyzerComponent.advancedCqlFilter
+            }, MapComponent.OBSERVATION_LAYER);
+        }
+
+        console.log(SearchComponent.cqlFilter + AnalyzerComponent.advancedCqlFilter);
+    }
+
     function toggleUserMenu() {
         var element = $(".user-menu-btn");
         if (element.hasClass("fa-caret-down")) {
@@ -117,6 +164,20 @@
         } else {
             element.addClass("activate");
             $(".tool-container").show();
+        }
+    }
+
+    function toggleHeatmap() {
+        var element = $(".heatmap-btn-container");
+        if (SearchComponent.cqlFilter != "" && SearchComponent.cqlFilter != null) {
+            MapComponent.removeLayer(MapComponent.OBSERVATION_LAYER);
+            if (element.hasClass("activate")) {
+                element.removeClass("activate");
+                MapComponent.loadObservationLayer();
+            } else {
+                element.addClass("activate");
+                MapComponent.showObservationLayerHeatmap();
+            }
         }
     }
 
@@ -198,6 +259,10 @@
 
         $(".tool-btn-container").click(function () {
             toggleToolsMenu();
+        });
+
+        $(".heatmap-btn-container").click(function () {
+            toggleHeatmap();
         });
 
         $.ajax({

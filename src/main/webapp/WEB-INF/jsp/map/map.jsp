@@ -46,6 +46,10 @@
     <i class="fas fa-tools"></i>
 </div>
 
+<div class="heatmap-btn-container cursor-pointer">
+    <i class="fas fa-layer-group"></i>
+</div>
+
 <div class="search-field-container">
     <div class="input-group main-search">
         <input type="text" class="form-control" id="search-observation-input" placeholder="Slo. ali lat. ime ptice" aria-label="Slo. ali lat. ime ptice">
@@ -131,8 +135,8 @@
         <div class="analiyze-data-container mx-0">
             <span class="row mx-0 title-text">Analiziranje opazovanj:</span>
             <div class="row mx-0 my-2">
-                <input class="form-control col-6" type="date">
-                <input class="form-control col-6" type="date">
+                <input class="form-control col-6" type="date" id="analyzeFromDate">
+                <input class="form-control col-6" type="date" id="analyzeToDate">
             </div>
             <div class="row mx-0 seasons-btn-container my-2">
                 <button class="btn btn-outline-secondary"><i class="fas fa-seedling"></i></button>
@@ -157,7 +161,7 @@
             </select>
             <div class="row mx-0 btm-container mt-4">
                 <button class="btn btn-outline-primary" onclick="MapComponent.removeTestLayer()">Ponastvai</button>
-                <button class="btn btn-outline-success" onclick="NotificationComponent.showNotification('Test test test', NotificationComponent.SUCCESS)">Uporabi</button>
+                <button class="btn btn-outline-success" onclick="AnalyzerComponent.useAnalyzeFilter()">Uporabi</button>
             </div>
         </div>
     </div>

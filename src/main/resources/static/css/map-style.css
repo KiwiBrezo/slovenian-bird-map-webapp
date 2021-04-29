@@ -119,6 +119,23 @@
     height: 60%;
 }
 
+.heatmap-btn-container {
+    position: fixed;
+    top: 20px;
+    right: 420px;
+    height: 45px;
+    width: 45px;
+    padding-top: 10.5px;
+    border-radius: 15px;
+    border: 1px solid #87986a;
+    background-color: rgba(255, 255, 255, 0.85);
+}
+
+.heatmap-btn-container .fa-layer-group {
+    width: 100%;
+    height: 60%;
+}
+
 .observation-info-container {
     background-color: rgba(255, 255, 255, 0.85);
     position: fixed;
@@ -143,7 +160,7 @@
     z-index: 10;
 }
 
-.tool-btn-container.activate {
+.tool-btn-container.activate, .heatmap-btn-container.activate {
     background-color: #718355 !important;
     color: white !important;
 }

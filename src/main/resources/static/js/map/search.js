@@ -37,7 +37,7 @@
             }
         }).done(function (response) {
             if (response != null && response.length > 0) {
-                loadObservationLayer(response);
+                MapComponent.loadObservationLayer(response);
             }
         });
 
@@ -113,31 +113,6 @@
             }
         } else {
             $(".search-result-container .container-body").append($("<p>").text("Ni bil najden noben zadetek!"));
-        }
-    }
-
-    function loadObservationLayer(birdIDs) {
-        var cqlFilter = "";
-        $.each(birdIDs || [], function (index, id) {
-            cqlFilter += "bird_id=" + id + " or ";
-        });
-        cqlFilter = cqlFilter.slice(0, -4);
-
-        SearchComponent.cqlFilter = cqlFilter;
-
-        if (cqlFilter !== "") {
-            MapComponent.addNewLayer({
-                "REQUEST": "GetMap",
-                "SERVICE": "WMS",
-                "VERSION": "1.3.0",
-                "LAYERS": "slovenian-bird-map:observations",
-                "CRS": 3857,
-                "WIDTH": MapComponent.map.getSize()[0],
-                "HEIGHT": MapComponent.map.getSize()[1],
-                "BBOX": MapComponent.map.getView().calculateExtent(MapComponent.map.getSize()).toString(),
-                "FORMAT": "image/png",
-                "CQL_FILTER": cqlFilter
-            }, MapComponent.OBSERVATION_LAYER);
         }
     }
 
