@@ -119,21 +119,23 @@
         }
 
         if (SearchComponent.cqlFilter !== "") {
-            MapComponent.addNewLayer({
-                "REQUEST": "GetMap",
-                "SERVICE": "WMS",
-                "VERSION": "1.3.0",
-                "LAYERS": "slovenian-bird-map:observations",
-                "CRS": 3857,
-                "WIDTH": MapComponent.map.getSize()[0],
-                "HEIGHT": MapComponent.map.getSize()[1],
-                "BBOX": MapComponent.map.getView().calculateExtent(MapComponent.map.getSize()).toString(),
-                "FORMAT": "image/png",
-                "CQL_FILTER": SearchComponent.cqlFilter + AnalyzerComponent.advancedCqlFilter
-            }, MapComponent.OBSERVATION_LAYER);
+            if ($(".heatmap-btn-container").hasClass("activate")) {
+                MapComponent.showObservationLayerHeatmap();
+            } else {
+                MapComponent.addNewLayer({
+                    "REQUEST": "GetMap",
+                    "SERVICE": "WMS",
+                    "VERSION": "1.3.0",
+                    "LAYERS": "slovenian-bird-map:observations",
+                    "CRS": 3857,
+                    "WIDTH": MapComponent.map.getSize()[0],
+                    "HEIGHT": MapComponent.map.getSize()[1],
+                    "BBOX": MapComponent.map.getView().calculateExtent(MapComponent.map.getSize()).toString(),
+                    "FORMAT": "image/png",
+                    "CQL_FILTER": SearchComponent.cqlFilter + AnalyzerComponent.advancedCqlFilter
+                }, MapComponent.OBSERVATION_LAYER);
+            }
         }
-
-        console.log(SearchComponent.cqlFilter + AnalyzerComponent.advancedCqlFilter);
     }
 
     function toggleUserMenu() {
