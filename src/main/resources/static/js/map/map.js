@@ -56,6 +56,18 @@
         MapComponent.map.addLayer(newLayer);
     }
 
+    exports.addNewImageLayer = function(params, layerName) {
+        var newLayer = new ol.layer.Image({
+            source: new ol.source.ImageWMS({
+                url: "http://83.212.82.148:8080/geoserver/slovenian-bird-map/wms",
+                params: params || {}
+            }),
+            name: layerName
+        });
+
+        MapComponent.map.addLayer(newLayer);
+    }
+
     exports.removeLayer = function(layerName) {
         MapComponent.map.getLayers().forEach(function (layer) {
             if (layer.get("name") === layerName) {
@@ -92,7 +104,7 @@
 
     exports.showObservationLayerHeatmap = function() {
         if (SearchComponent.cqlFilter !== "") {
-            MapComponent.addNewLayer({
+            MapComponent.addNewImageLayer({
                 "REQUEST": "GetMap",
                 "SERVICE": "WMS",
                 "VERSION": "1.3.0",
@@ -109,11 +121,11 @@
 
     exports.loadObservationLayer = function(birdIDs) {
         if (birdIDs != null) {
-            var cqlFilter = "";
+            var cqlFilter = "bird_id IN (";
             $.each(birdIDs || [], function (index, id) {
-                cqlFilter += "bird_id=" + id + " or ";
+                cqlFilter += id + ", ";
             });
-            cqlFilter = cqlFilter.slice(0, -4);
+            cqlFilter = cqlFilter.slice(0, -2).concat(")");
 
             SearchComponent.cqlFilter = cqlFilter;
         }
@@ -135,6 +147,8 @@
                     "CQL_FILTER": SearchComponent.cqlFilter + AnalyzerComponent.advancedCqlFilter
                 }, MapComponent.OBSERVATION_LAYER);
             }
+
+            console.log(SearchComponent.cqlFilter + AnalyzerComponent.advancedCqlFilter);
         }
     }
 

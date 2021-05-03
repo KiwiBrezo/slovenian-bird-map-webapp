@@ -404,3 +404,9 @@
     margin-right: auto;
     width: 150px;
 }
+
+.season-btn.activate {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+}

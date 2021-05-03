@@ -139,10 +139,10 @@
                 <input class="form-control col-6" type="date" id="analyzeToDate">
             </div>
             <div class="row mx-0 seasons-btn-container my-2">
-                <button class="btn btn-outline-secondary"><i class="fas fa-seedling"></i></button>
-                <button class="btn btn-outline-secondary"><i class="fas fa-sun"></i></button>
-                <button class="btn btn-outline-secondary"><i class="fas fa-cloud-showers-heavy"></i></button>
-                <button class="btn btn-outline-secondary"><i class="far fa-snowflake"></i></button>
+                <button class="btn btn-outline-secondary season-btn" id="springSeasonBtn"><i class="fas fa-seedling"></i></button>
+                <button class="btn btn-outline-secondary season-btn" id="summerSeasonBtn"><i class="fas fa-sun"></i></button>
+                <button class="btn btn-outline-secondary season-btn" id="autumnSeasonBtn"><i class="fas fa-cloud-showers-heavy"></i></button>
+                <button class="btn btn-outline-secondary season-btn" id="winterSeasonBtn"><i class="far fa-snowflake"></i></button>
             </div>
             <div class="row mx-0 my-2">
                 <div class="col-7 px-0 mr-2 point-selector-container">
@@ -160,7 +160,7 @@
                 <option value="-1" selected>Izberi območje</option>
             </select>
             <div class="row mx-0 btm-container mt-4">
-                <button class="btn btn-outline-primary" onclick="MapComponent.removeTestLayer()">Ponastvai</button>
+                <button class="btn btn-outline-primary" onclick="AnalyzerComponent.resetAnalyzeFilter()">Ponastvai</button>
                 <button class="btn btn-outline-success" onclick="AnalyzerComponent.useAnalyzeFilter()">Uporabi</button>
             </div>
         </div>
