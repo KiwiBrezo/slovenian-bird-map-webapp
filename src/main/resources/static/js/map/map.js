@@ -6,6 +6,11 @@
     var mapSLOCenterCoordinateLat = 46.119944;
 
     var mousePositionControl;
+    var draw;
+    var snap;
+    var drawVectorSource;
+    var drawVectorLayer;
+    var drawModify;
 
     exports.OBSERVATION_LAYER = "observation_layer";
 
@@ -152,6 +157,31 @@
         }
     }
 
+    exports.activateAndSetDrawingOnMap = function(type) {
+        $(".draw-location-btn").removeClass("activate");
+        if (type == "Circle") {
+            $(".circle-selector-btn").addClass("activate");
+        } else if (type == "Polygon") {
+            $(".poligon-selector-btn").addClass("activate");
+        }
+        if (draw != null) MapComponent.map.removeInteraction(draw);
+        if (snap != null) MapComponent.map.removeInteraction(snap);
+        MapComponent.clearDrawLayer();
+        addDrawInteraction(type);
+    }
+
+    exports.clearDrawLayer = function() {
+        drawVectorSource.clear();
+    }
+
+    exports.getWKTFromDrawVector = function () {
+        var wktFormat = new ol.format.WKT();
+        if ($(".circle-selector-btn").hasClass("activate")) {
+            return wktFormat.writeGeometry(ol.geom.Polygon.fromCircle(drawVectorSource.getFeatures()[0].getGeometry()))
+        }
+        return wktFormat.writeGeometry(drawVectorSource.getFeatures()[0].getGeometry());
+    }
+
     function toggleUserMenu() {
         var element = $(".user-menu-btn");
         if (element.hasClass("fa-caret-down")) {
@@ -197,7 +227,58 @@
         }
     }
 
+    function addDrawInteraction(type) {
+        draw = new ol.interaction.Draw({
+            source: drawVectorSource,
+            type: type,
+            stopClick: true
+        });
+
+        snap = new ol.interaction.Snap({
+            source: drawVectorSource
+        });
+
+        MapComponent.map.addInteraction(draw);
+        MapComponent.map.addInteraction(snap);
+    }
+
     function initMap() {
+        /*drawVectorSource = new ol.source.Vector({
+            format: new ol.format.GeoJSON({ "dataProjection": 'EPSG:3857', "featureProjection": 'EPSG:4326' })
+        });*/
+
+        drawVectorSource = new ol.source.Vector();
+
+        drawVectorSource.on("change", function() {
+            if (drawVectorSource.getFeatures().length == 1) {
+                if (draw != null) MapComponent.map.removeInteraction(draw);
+                if (snap != null) MapComponent.map.removeInteraction(snap);
+            }
+        });
+
+        drawVectorLayer = new ol.layer.Vector({
+            source: drawVectorSource,
+            style: new ol.style.Style({
+                fill: new ol.style.Fill({
+                    color: 'rgba(255, 255, 255, 0.2)',
+                }),
+                stroke: new ol.style.Stroke({
+                    color: '#718355',
+                    width: 2,
+                }),
+                image: new ol.style.Circle({
+                    radius: 7,
+                    fill: new ol.style.Fill({
+                        color: '#718355',
+                    }),
+                }),
+            }),
+        });
+
+        drawModify = new ol.interaction.Modify({
+            source: drawVectorSource
+        });
+
         mousePositionControl = new ol.control.MousePosition({
             coordinateFormat: ol.coordinate.createStringXY(6),
             projection: 'EPSG:4326',
@@ -211,7 +292,8 @@
             layers: [
                 new ol.layer.Tile({
                     source: new ol.source.OSM()
-                })
+                }),
+                drawVectorLayer
             ],
             view: new ol.View({
                 center: ol.proj.fromLonLat([mapSLOCenterCoordinateLon, mapSLOCenterCoordinateLat]),
@@ -256,6 +338,8 @@
         });
 
         MapComponent.map.addLayer(MapComponent.newObservationMarkerLayer);
+
+        MapComponent.map.addInteraction(drawModify);
 
         $(".ol-attribution").hide();
 

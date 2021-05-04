@@ -145,16 +145,8 @@
                 <button class="btn btn-outline-secondary season-btn" id="winterSeasonBtn"><i class="far fa-snowflake"></i></button>
             </div>
             <div class="row mx-0 my-2">
-                <div class="col-7 px-0 mr-2 point-selector-container">
-                    <button class="btn btn-outline-secondary"><i class="fas fa-street-view"></i></button>
-                    <div class="input-group">
-                        <input type="number" class="form-control" value="1">
-                        <div class="input-group-append">
-                            <span class="input-group-text" id="basic-addon2">KM</span>
-                        </div>
-                    </div>
-                </div>
-                <button class="btn btn-outline-secondary" id="poligon-selector-btn"><i class="fas fa-draw-polygon"></i></button>
+                <button class="btn btn-outline-secondary circle-selector-btn draw-location-btn" onclick="MapComponent.activateAndSetDrawingOnMap('Circle')"><i class="fas fa-street-view"></i></button>
+                <button class="btn btn-outline-secondary poligon-selector-btn draw-location-btn" onclick="MapComponent.activateAndSetDrawingOnMap('Polygon')"><i class="fas fa-draw-polygon"></i></button>
             </div>
             <select name="area" id="area-select" class="form-select w-100">
                 <option value="-1" selected>Izberi območje</option>

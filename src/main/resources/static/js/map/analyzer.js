@@ -23,6 +23,7 @@
         AnalyzerComponent.advancedCqlFilter = "";
 
         handleTimeSelection();
+        handleSelectedLocation();
 
         MapComponent.removeLayer(MapComponent.OBSERVATION_LAYER);
         MapComponent.loadObservationLayer();
@@ -32,12 +33,15 @@
         $("#analyzeFromDate").val("").trigger("change");
         $("#analyzeToDate").val("").trigger("change");
         $(".season-btn").removeClass("activate");
+        $(".draw-location-btn").removeClass("activate");
 
         if ($("#analyzeFromDate").hasClass("col-12")) {
             $("#analyzeFromDate").removeClass("col-12");
             $("#analyzeFromDate").addClass("col-6");
             $("#analyzeToDate").show();
         }
+
+        MapComponent.clearDrawLayer();
     }
 
     function activateSeasonTimeBtn() {
@@ -90,6 +94,13 @@
             if ($("#analyzeToDate").val() != "") {
                 AnalyzerComponent.advancedCqlFilter += " and date < '" + $("#analyzeToDate").val() + "T00:00:00Z'";
             }
+        }
+    }
+
+    function handleSelectedLocation() {
+        var wkt = MapComponent.getWKTFromDrawVector();
+        if (wkt != null) {
+            AnalyzerComponent.advancedCqlFilter += " and INTERSECTS(geom, " + wkt + ")";
         }
     }
 

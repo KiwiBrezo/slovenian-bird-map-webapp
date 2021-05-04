@@ -294,9 +294,14 @@
     width: 120px;
 }
 
-#poligon-selector-btn {
+.poligon-selector-btn {
     margin-left: auto;
-    width: 100px;
+    width: 135px;
+}
+
+.circle-selector-btn {
+    margin-right: auto;
+    width: 135px;
 }
 
 #observation-number {
@@ -406,6 +411,12 @@
 }
 
 .season-btn.activate {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.draw-location-btn.activate {
     color: #fff;
     background-color: #6c757d;
     border-color: #6c757d;
