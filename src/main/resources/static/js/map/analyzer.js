@@ -32,6 +32,7 @@
     exports.resetAnalyzeFilter = function () {
         $("#analyzeFromDate").val("").trigger("change");
         $("#analyzeToDate").val("").trigger("change");
+        $("#area-select").val("-1").trigger("change");
         $(".season-btn").removeClass("activate");
         $(".draw-location-btn").removeClass("activate");
 
@@ -41,7 +42,11 @@
             $("#analyzeToDate").show();
         }
 
+        AnalyzerComponent.advancedCqlFilter = "";
         MapComponent.clearDrawLayer();
+        MapComponent.resetDrawTools();
+        MapComponent.removeLayer(MapComponent.OBSERVATION_LAYER);
+        MapComponent.loadObservationLayer();
     }
 
     function activateSeasonTimeBtn() {

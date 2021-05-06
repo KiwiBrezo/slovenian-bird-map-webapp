@@ -158,15 +158,25 @@
     }
 
     exports.activateAndSetDrawingOnMap = function(type) {
-        $(".draw-location-btn").removeClass("activate");
-        if (type == "Circle") {
-            $(".circle-selector-btn").addClass("activate");
-        } else if (type == "Polygon") {
-            $(".poligon-selector-btn").addClass("activate");
-        }
-        if (draw != null) MapComponent.map.removeInteraction(draw);
-        if (snap != null) MapComponent.map.removeInteraction(snap);
+        MapComponent.resetDrawTools();
         MapComponent.clearDrawLayer();
+        if (type == "Circle") {
+            if ($(".circle-selector-btn").hasClass("activate")) {
+                $(".circle-selector-btn").removeClass("activate");
+                return;
+            } else {
+                $(".poligon-selector-btn").removeClass("activate");
+                $(".circle-selector-btn").addClass("activate");
+            }
+        } else if (type == "Polygon") {
+            if ($(".poligon-selector-btn").hasClass("activate")) {
+                $(".poligon-selector-btn").removeClass("activate");
+                return;
+            } else {
+                $(".circle-selector-btn").removeClass("activate");
+                $(".poligon-selector-btn").addClass("activate");
+            }
+        }
         addDrawInteraction(type);
     }
 
@@ -174,12 +184,17 @@
         drawVectorSource.clear();
     }
 
+    exports.resetDrawTools = function() {
+        if (draw != null) MapComponent.map.removeInteraction(draw);
+        if (snap != null) MapComponent.map.removeInteraction(snap);
+    }
+
     exports.getWKTFromDrawVector = function () {
         var wktFormat = new ol.format.WKT();
         if ($(".circle-selector-btn").hasClass("activate")) {
-            return wktFormat.writeGeometry(ol.geom.Polygon.fromCircle(drawVectorSource.getFeatures()[0].getGeometry()))
+            return wktFormat.writeGeometry(ol.geom.Polygon.fromCircle(drawVectorSource.getFeatures()[0].getGeometry().transform('EPSG:3857', 'EPSG:4326')))
         }
-        return wktFormat.writeGeometry(drawVectorSource.getFeatures()[0].getGeometry());
+        return wktFormat.writeGeometry(drawVectorSource.getFeatures()[0].getGeometry().transform('EPSG:3857', 'EPSG:4326'));
     }
 
     function toggleUserMenu() {
@@ -243,16 +258,11 @@
     }
 
     function initMap() {
-        /*drawVectorSource = new ol.source.Vector({
-            format: new ol.format.GeoJSON({ "dataProjection": 'EPSG:3857', "featureProjection": 'EPSG:4326' })
-        });*/
-
         drawVectorSource = new ol.source.Vector();
 
         drawVectorSource.on("change", function() {
             if (drawVectorSource.getFeatures().length == 1) {
-                if (draw != null) MapComponent.map.removeInteraction(draw);
-                if (snap != null) MapComponent.map.removeInteraction(snap);
+                MapComponent.resetDrawTools();
             }
         });
 
