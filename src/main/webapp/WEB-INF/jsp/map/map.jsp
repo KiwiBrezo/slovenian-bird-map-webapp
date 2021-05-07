@@ -4,10 +4,7 @@
 
 <div class="location-selector-container">
     <select class="form-select location-selector-select">
-        <option selected>Slovenija</option>
-        <option value="1">Ormoške lagune</option>
-        <option value="2">Škocjanski zatok</option>
-        <option value="3">Ljubljansko barje</option>
+        <option value="-1">Izberi območje za prikaz</option>
     </select>
 </div>
 

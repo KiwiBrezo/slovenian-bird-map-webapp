@@ -1,9 +1,6 @@
 package com.sbm.slovenianbirdmap.controllers;
 
-import com.sbm.slovenianbirdmap.dao.BirdsDao;
-import com.sbm.slovenianbirdmap.dao.ObservationDao;
-import com.sbm.slovenianbirdmap.dao.TestModelDao;
-import com.sbm.slovenianbirdmap.dao.UserDao;
+import com.sbm.slovenianbirdmap.dao.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 
@@ -17,6 +14,9 @@ public class AbstractController {
 
     @Autowired
     protected ObservationDao observationDao;
+
+    @Autowired
+    protected AreaDao areaDao;
 
     @Autowired
     protected TestModelDao testModelDao;
