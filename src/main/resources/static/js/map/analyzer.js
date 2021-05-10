@@ -24,6 +24,7 @@
 
         handleTimeSelection();
         handleSelectedLocation();
+        handleAreaSelect();
 
         MapComponent.removeLayer(MapComponent.OBSERVATION_LAYER);
         MapComponent.loadObservationLayer();
@@ -107,6 +108,10 @@
         if (wkt != null) {
             AnalyzerComponent.advancedCqlFilter += " and INTERSECTS(geom, " + wkt + ")";
         }
+    }
+
+    function handleAreaSelect() {
+        console.log($("#area-select").val());
     }
 
 })(AnalyzerComponent = {});

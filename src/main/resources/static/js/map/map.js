@@ -13,6 +13,7 @@
     var drawModify;
 
     exports.OBSERVATION_LAYER = "observation_layer";
+    exports.DRAW_LAYER = "draw_layer";
 
     exports.newObservationMarkerLayer = null;
     exports.map = null;
@@ -283,6 +284,7 @@
                     }),
                 }),
             }),
+            name: MapComponent.DRAW_LAYER
         });
 
         drawModify = new ol.interaction.Modify({
