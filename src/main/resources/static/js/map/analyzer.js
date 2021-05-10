@@ -110,8 +110,18 @@
         }
     }
 
+    // TODO fix this ... naj se doda na draw layer al nekam
     function handleAreaSelect() {
-        console.log($("#area-select").val());
+        var areaWkt = $("#area-select").val();
+        if (areaWkt != "-1" || areaWkt != null) {
+            AnalyzerComponent.advancedCqlFilter += " and INTERSECTS(geom, " + areaWkt + ")";
+
+            var feature = new ol.Feature({
+                geometry: MapComponent.wktFormater.readFeature(areaWkt).getGeometry().transform('EPSG:4326', 'EPSG:3857')
+            })
+
+            MapComponent.newObservationMarkerLayer.getSource().addFeature(feature);
+        }
     }
 
 })(AnalyzerComponent = {});

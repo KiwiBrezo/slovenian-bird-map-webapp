@@ -93,7 +93,10 @@
                     .addClass("col-3")
                     .css("text-align", "end")
                     .append($("<i>")
-                        .addClass("fas fa-map-marked-alt cursor-pointer")));
+                        .addClass("fas fa-map-marked-alt cursor-pointer"))
+                    .click(function () {
+                        MapComponent.centerToGeom(observation.geom);
+                    }));
 
                 rowElement.find(".second-row").append($("<div>")
                     .addClass("col-3")

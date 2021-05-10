@@ -17,6 +17,7 @@
 
     exports.newObservationMarkerLayer = null;
     exports.map = null;
+    exports.wktFormater = null;
 
     exports.init = function () {
         console.log("Map component init...");
@@ -76,10 +77,27 @@
 
     exports.removeLayer = function(layerName) {
         MapComponent.map.getLayers().forEach(function (layer) {
-            if (layer.get("name") === layerName) {
+            if (layer.get("name") == layerName) {
                 MapComponent.map.removeLayer(layer);
             }
         });
+    }
+
+    exports.getLayerByName = function(layerName) {
+        var returnLayer = null;
+        MapComponent.map.getLayers().forEach(function (layer) {
+            if (layer.get("name") == layerName) {
+                returnLayer = layer;
+            }
+        });
+        return returnLayer;
+    }
+
+    exports.centerToGeom = function(geom) {
+        var feature = MapComponent.wktFormater.readFeature(geom);
+        var extent = feature.getGeometry().transform('EPSG:4326', 'EPSG:3857').getExtent();
+
+        MapComponent.map.getView().fit(extent, MapComponent.map.getSize());
     }
 
     exports.addTestLayer = function () {
@@ -191,11 +209,13 @@
     }
 
     exports.getWKTFromDrawVector = function () {
-        var wktFormat = new ol.format.WKT();
         if ($(".circle-selector-btn").hasClass("activate")) {
-            return wktFormat.writeGeometry(ol.geom.Polygon.fromCircle(drawVectorSource.getFeatures()[0].getGeometry().transform('EPSG:3857', 'EPSG:4326')))
+            return MapComponent.wktFormater.writeGeometry(ol.geom.Polygon.fromCircle(drawVectorSource.getFeatures()[0].getGeometry().transform('EPSG:3857', 'EPSG:4326')))
         }
-        return wktFormat.writeGeometry(drawVectorSource.getFeatures()[0].getGeometry().transform('EPSG:3857', 'EPSG:4326'));
+        if ($(".poligon-selector-btn").hasClass("activate")) {
+            return MapComponent.wktFormater.writeGeometry(drawVectorSource.getFeatures()[0].getGeometry().transform('EPSG:3857', 'EPSG:4326'));
+        }
+        return null;
     }
 
     function toggleUserMenu() {
@@ -259,6 +279,8 @@
     }
 
     function initMap() {
+        MapComponent.wktFormater = new ol.format.WKT()
+
         drawVectorSource = new ol.source.Vector();
 
         drawVectorSource.on("change", function() {
@@ -376,6 +398,17 @@
         $(".heatmap-btn-container").click(function () {
             toggleHeatmap();
         });
+
+        $(".location-selector-select").change(function () {
+            console.log($(".location-selector-select").val());
+            if ($(".location-selector-select").val() != "-1" || $(".location-selector-select").val() != null) {
+                MapComponent.centerToGeom($(".location-selector-select").val());
+            }
+        });
+
+        $('.observation-info-container #zoomToBtn').click(function() {
+            MapComponent.centerToGeom($(this).data("geom"));
+        })
 
         $.ajax({
             url: "/bird/getAll",
