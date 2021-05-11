@@ -11,5 +11,15 @@ public class BirdSQL {
     @Value("${get.all.bird}")
     private String getAllBird;
 
+    @Value("${get.some.birds}")
+    private String getSomeBirds;
+
+    @Value("${search.bird.by.term}")
+    private String searchBirdByTerm;
+
     public String getGetAllBird() { return getAllBird; }
+
+    public String getGetSomeBirds() { return getSomeBirds; }
+
+    public String getSearchBirdByTerm() { return searchBirdByTerm; }
 }

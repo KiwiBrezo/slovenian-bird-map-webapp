@@ -40,7 +40,11 @@
     }
 
     exports.showObservationInfo = function(data) {
-        $('.observation-info-container #birdNormalName').text(data.birdName);
+        $('.observation-info-container #birdNormalName')
+            .text(data.birdName)
+            .click(function () {
+                BirdInfoComponent.showInfoForBird(data.birdID)
+            });
         $('.observation-info-container #userData').text("Opazovalec: " + data.userName + " " + data.userSurname);
         $('.observation-info-container #col').text("Št. osebkov: " + data.col);
         $('.observation-info-container #dateOfObservation').text("Datum: " + new Date(data.date).toISOString().split('T')[0]);

@@ -28,7 +28,7 @@
             <span class="cursor-pointer"><a href="#">Profil</a></span>
         </div>
         <div class="row mx-1">
-            <span class="cursor-pointer"><a href="#">Knjižnjica ptic</a></span>
+            <span class="cursor-pointer"><a href="/bird/">Knjižnjica ptic</a></span>
         </div>
         <div class="row mx-1">
             <span class="cursor-pointer"><a href="#">Nastavitve</a></span>

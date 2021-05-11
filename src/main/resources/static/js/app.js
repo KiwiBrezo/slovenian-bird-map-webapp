@@ -8,5 +8,7 @@
         MapComponent.init();
         TestComponent.init();
         UserController.init();
+        BirdInfoComponent.init();
+        BirdSearchComponent.init();
     }
 })(AppController = {})

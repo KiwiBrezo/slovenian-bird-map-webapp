@@ -81,3 +81,28 @@
     color: #888888;
     text-decoration: none;
 }
+
+.main-content {
+    margin-left: auto;
+    margin-right: auto;
+    width: 950px;
+    height: 100%;
+}
+
+.library-search-container {
+    margin: 20px auto;
+    padding: 10px 0px;
+    width: 500px;
+}
+
+.library-search-input {
+    width: 80% !important;
+}
+
+.search-field-text {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 19px;
+    position: relative;
+    top: 3px;
+}
