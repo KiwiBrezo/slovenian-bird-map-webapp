@@ -133,7 +133,7 @@
             <span class="row mx-0 title-text">Analiziranje opazovanj:</span>
             <div class="row mx-0 my-2">
                 <input class="form-control col-6" type="date" id="analyzeFromDate">
-                <input class="form-control col-6" type="date" id="analyzeToDate">
+                <input class="form-control" type="date" id="analyzeToDate">
             </div>
             <div class="row mx-0 seasons-btn-container my-2">
                 <button class="btn btn-outline-secondary season-btn" id="springSeasonBtn"><i class="fas fa-seedling"></i></button>

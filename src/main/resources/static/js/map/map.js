@@ -14,8 +14,10 @@
 
     exports.OBSERVATION_LAYER = "observation_layer";
     exports.DRAW_LAYER = "draw_layer";
+    exports.AREA_LAYER = "area_layer";
 
     exports.newObservationMarkerLayer = null;
+    exports.areaLayer = null;
     exports.map = null;
     exports.wktFormater = null;
 
@@ -97,7 +99,10 @@
         var feature = MapComponent.wktFormater.readFeature(geom);
         var extent = feature.getGeometry().transform('EPSG:4326', 'EPSG:3857').getExtent();
 
-        MapComponent.map.getView().fit(extent, MapComponent.map.getSize());
+        MapComponent.map.getView().fit(extent, {
+            size: MapComponent.map.getSize(),
+            padding: [500, 500, 500, 500]
+        });
     }
 
     exports.addTestLayer = function () {
@@ -179,6 +184,8 @@
     exports.activateAndSetDrawingOnMap = function(type) {
         MapComponent.resetDrawTools();
         MapComponent.clearDrawLayer();
+        MapComponent.areaLayer.getSource().clear();
+        $("#area-select").val("-1").trigger("change");
         if (type == "Circle") {
             if ($(".circle-selector-btn").hasClass("activate")) {
                 $(".circle-selector-btn").removeClass("activate");
@@ -296,13 +303,13 @@
                     color: 'rgba(255, 255, 255, 0.2)',
                 }),
                 stroke: new ol.style.Stroke({
-                    color: '#718355',
+                    color: '#d91e3a',
                     width: 2,
                 }),
                 image: new ol.style.Circle({
                     radius: 7,
                     fill: new ol.style.Fill({
-                        color: '#718355',
+                        color: '#d91e3a',
                     }),
                 }),
             }),
@@ -371,7 +378,22 @@
             })
         });
 
+        MapComponent.areaLayer = new ol.layer.Vector({
+            source: new ol.source.Vector(),
+            style: new ol.style.Style({
+                fill: new ol.style.Fill({
+                    color: 'rgba(255, 255, 255, 0.2)'
+                }),
+                stroke: new ol.style.Stroke({
+                    color: '#d91e3a',
+                    width: 2
+                })
+            })
+        });
+
         MapComponent.map.addLayer(MapComponent.newObservationMarkerLayer);
+
+        MapComponent.map.addLayer(MapComponent.areaLayer);
 
         MapComponent.map.addInteraction(drawModify);
 
@@ -409,6 +431,12 @@
         $('.observation-info-container #zoomToBtn').click(function() {
             MapComponent.centerToGeom($(this).data("geom"));
         })
+
+        $("#area-select").change(function () {
+            MapComponent.clearDrawLayer();
+            MapComponent.resetDrawTools();
+            $(".draw-location-btn").removeClass("activate");
+        });
 
         $.ajax({
             url: "/bird/getAll",

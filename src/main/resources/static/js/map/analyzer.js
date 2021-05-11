@@ -44,6 +44,7 @@
         }
 
         AnalyzerComponent.advancedCqlFilter = "";
+        MapComponent.areaLayer.getSource().clear();
         MapComponent.clearDrawLayer();
         MapComponent.resetDrawTools();
         MapComponent.removeLayer(MapComponent.OBSERVATION_LAYER);
@@ -107,21 +108,26 @@
         var wkt = MapComponent.getWKTFromDrawVector();
         if (wkt != null) {
             AnalyzerComponent.advancedCqlFilter += " and INTERSECTS(geom, " + wkt + ")";
+            MapComponent.areaLayer.getSource().clear();
+            setAreaSelectionToMap(wkt);
         }
     }
 
-    // TODO fix this ... naj se doda na draw layer al nekam
     function handleAreaSelect() {
         var areaWkt = $("#area-select").val();
-        if (areaWkt != "-1" || areaWkt != null) {
+        if (areaWkt != -1) {
             AnalyzerComponent.advancedCqlFilter += " and INTERSECTS(geom, " + areaWkt + ")";
-
-            var feature = new ol.Feature({
-                geometry: MapComponent.wktFormater.readFeature(areaWkt).getGeometry().transform('EPSG:4326', 'EPSG:3857')
-            })
-
-            MapComponent.newObservationMarkerLayer.getSource().addFeature(feature);
+            MapComponent.areaLayer.getSource().clear();
+            setAreaSelectionToMap(areaWkt);
         }
+    }
+
+    function setAreaSelectionToMap(wkt) {
+        var feature = new ol.Feature({
+            geometry: MapComponent.wktFormater.readFeature(wkt).getGeometry().transform('EPSG:4326', 'EPSG:3857')
+        })
+        console.log(feature);
+        MapComponent.areaLayer.getSource().addFeature(feature);
     }
 
 })(AnalyzerComponent = {});

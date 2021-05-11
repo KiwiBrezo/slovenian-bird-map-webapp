@@ -74,7 +74,7 @@
     top: 75px;
     left: 55px;
     height: 540px;
-    width: 330px;
+    width: 370px;
     border-radius: 15px;
     border: 1px solid #87986a;
 }
@@ -420,4 +420,12 @@
     color: #fff;
     background-color: #6c757d;
     border-color: #6c757d;
+}
+
+#analyzeFromDate, #analyzeToDate {
+    width: 170px;
+}
+
+#analyzeToDate {
+    margin-left: auto;
 }
