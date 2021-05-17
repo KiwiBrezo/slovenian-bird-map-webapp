@@ -37,4 +37,13 @@ public class BirdsDao extends AbstractDao {
 
         return namedParameterJdbcTemplate.query(sql, params, new BirdModelMapper());
     }
+
+    public BirdModel getBirdByID(Long birdID) {
+        String sql = birdSQL.getGetBirdByID();
+
+        SqlParameterSource params = new MapSqlParameterSource()
+                .addValue("birdID", birdID);
+
+        return namedParameterJdbcTemplate.queryForObject(sql, params, new BirdModelMapper());
+    }
 }

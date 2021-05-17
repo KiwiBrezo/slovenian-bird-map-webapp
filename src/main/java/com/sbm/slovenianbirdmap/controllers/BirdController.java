@@ -30,6 +30,7 @@ public class BirdController extends AbstractController{
                              @PathVariable(value = "birdID") final Long birdID,
                              Model model) {
         if (userRole.equals("user") || userRole.equals("admin")) {
+            model.addAttribute(JspModelAttributes.BIRD_DATA_OBJECT, birdsDao.getBirdByID(birdID));
             model.addAttribute(JspModelAttributes.VIEW_BODY, PageNames.BIRD_INFO_PAGE);
             return PageNames.INDEX_PAGE;
         }

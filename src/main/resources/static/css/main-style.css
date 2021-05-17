@@ -106,3 +106,39 @@
     position: relative;
     top: 3px;
 }
+
+.bird-result-container {
+    margin-bottom: 15px;
+    height: 90px;
+    width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #65724a;
+    border-radius: 15px;
+    box-shadow: 4px 5px #d8d8d83b;
+    padding: 15px;
+}
+
+.bird-name {
+    color: #65724a;
+    font-size: 21px;
+    text-decoration: none;
+    text-underline: none;
+    cursor: pointer;
+}
+
+.bird-name:hover, .bird-name:visited {
+    color: #65724a;
+    font-size: 21px;
+}
+
+.bird-name-lat {
+    color: #6c757d;
+}
+
+.load-more-bird-results {
+    margin-bottom: 15px;
+    width: 200px;
+    margin-right: auto;
+    margin-left: auto;
+}

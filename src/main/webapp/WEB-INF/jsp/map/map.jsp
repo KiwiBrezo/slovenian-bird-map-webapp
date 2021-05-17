@@ -157,3 +157,5 @@
 </div>
 
 <div class="result-window"></div>
+
+<div id="defaultCqlFilter" data-cql="${defaultCqlFilter}"></div>
