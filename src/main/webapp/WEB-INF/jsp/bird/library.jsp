@@ -4,8 +4,8 @@
 <div class="main-content">
     <div class="library-search-container">
         <div class="row">
-            <input type="text" class="form-control library-search-input" id="librarySearchInput">
-            <span class="search-field-text cursor-pointer">Išči</span>
+            <input type="text" class="form-control library-search-input" id="librarySearchInput" placeholder="Slo. ali lat. ime ptice">
+            <span class="search-field-text cursor-pointer" onclick="BirdSearchComponent.searchBirds()">Išči</span>
         </div>
     </div>
     <div class="search-results-container">
@@ -23,8 +23,8 @@
                 </div>
             </div>
         </c:forEach>
-        <div class="row">
-            <button class="btn btn-outline-primary load-more-bird-results">Naloži več</button>
-        </div>
+    </div>
+    <div class="row">
+        <button class="btn btn-outline-primary load-more-bird-results" onclick="BirdSearchComponent.loadMoreResults()">Naloži več</button>
     </div>
 </div>

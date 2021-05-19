@@ -28,6 +28,12 @@
         AnalyzerComponent.init();
         SearchComponent.init();
         NotificationComponent.init();
+
+        var startCql = $("#defaultCqlFilter").data("cql");
+        if (startCql != null && startCql != "") {
+            SearchComponent.cqlFilter = startCql;
+            MapComponent.loadObservationLayer();
+        }
     }
 
     exports.closeSearchResults = function() {

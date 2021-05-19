@@ -37,11 +37,11 @@ public class MapController extends AbstractController {
             String cqlFilter = "";
 
             if (type != null && id != null) {
-                if (type == "bird") {
+                if (type.equals("bird")) {
                     cqlFilter = "bird_id = " + id.toString();
-                } else if (type == "observation") {
+                } else if (type.equals("observation")) {
                     cqlFilter = "observation_id = " + id.toString();
-                } else if (type == "user") {
+                } else if (type.equals("user")) {
                     cqlFilter = "user_id = " + id.toString();
                 }
             }
