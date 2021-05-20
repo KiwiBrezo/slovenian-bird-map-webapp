@@ -1,5 +1,6 @@
 package com.sbm.slovenianbirdmap.controllers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sbm.slovenianbirdmap.dao.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
@@ -20,4 +21,6 @@ public class AbstractController {
 
     @Autowired
     protected TestModelDao testModelDao;
+
+    protected ObjectMapper objectMapper = new ObjectMapper();
 }

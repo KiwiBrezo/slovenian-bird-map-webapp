@@ -115,7 +115,7 @@
     margin-right: auto;
     border: 1px solid #65724a;
     border-radius: 15px;
-    box-shadow: 4px 5px #d8d8d83b;
+    box-shadow: 6px 5px 8px #d8d8d8a3;
     padding: 15px;
 }
 
@@ -141,4 +141,67 @@
     width: 200px;
     margin-right: auto;
     margin-left: auto;
+}
+
+.main-bird-info-container {
+    margin-top: 40px;
+}
+
+.main-bird-info {
+    width: 100%;
+    height: 270px;
+}
+
+.main-bird-info .col-7 {
+    margin-top: 15px;
+}
+
+.main-bird-info h1 {
+    color: #65724a;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.main-bird-info h4 {
+    color: #888888;
+    font-style: italic;
+}
+
+.bird-map-link {
+    margin-top: 15px;
+}
+
+.link-container {
+    width: 250px;
+    height: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: #65724a;
+    border: 1px solid #65724a;
+    border-radius: 8px;
+    box-shadow: 4px 4px 9px grey;
+}
+
+.link-container a {
+    color: #65724a;
+    position: relative;
+    top: 18px;
+}
+
+.link-container a:hover {
+    color: #65724a;
+}
+
+.secondary-bird-info {
+    margin-top: 25px;
+}
+
+.secondary-bird-info .bird-data {
+    width: 80%;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #8888881f;
+    border-radius: 5px;
 }
