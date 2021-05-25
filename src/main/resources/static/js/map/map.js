@@ -31,6 +31,10 @@
 
         var startCql = $("#defaultCqlFilter").data("cql");
         if (startCql != null && startCql != "") {
+            $(".search-field-container").hide();
+            $(".tool-btn-container").trigger("click");
+            $(".tool-btn-container").css("right", "20px");
+            $(".heatmap-btn-container").css("right", "75px");
             SearchComponent.cqlFilter = startCql;
             MapComponent.loadObservationLayer();
         }
