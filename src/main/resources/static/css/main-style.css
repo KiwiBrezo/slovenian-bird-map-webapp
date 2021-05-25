@@ -199,9 +199,31 @@
 
 .secondary-bird-info .bird-data {
     width: 80%;
-    height: 300px;
     margin-left: auto;
     margin-right: auto;
     background-color: #8888881f;
     border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.secondary-bird-info .bird-data .data-row {
+    font-size: 19px;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.bird-data .data-row .key-data {
+    font-style: italic;
+    color: #888888;
+}
+
+.bird-data .data-row .key-data .fa-chevron-right {
+    margin-right: 10px;
+}
+
+.bird-data .data-row .value-data {
+    color: #65724a;
 }
