@@ -33,3 +33,5 @@
         </div>
     </div>
 </div>
+
+<div id="typeOfController" data-controller="User"></div>

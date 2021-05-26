@@ -159,3 +159,5 @@
 <div class="result-window"></div>
 
 <div id="defaultCqlFilter" data-cql="${defaultCqlFilter}"></div>
+
+<div id="typeOfController" data-controller="Map"></div>

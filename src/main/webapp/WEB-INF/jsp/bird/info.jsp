@@ -77,3 +77,5 @@
         </div>
     </div>
 </div>
+
+<div id="typeOfController" data-controller="BirdInfo"></div>

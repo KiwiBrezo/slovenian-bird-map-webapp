@@ -28,3 +28,5 @@
         <button class="btn btn-outline-primary load-more-bird-results" onclick="BirdSearchComponent.loadMoreResults()">Naloži več</button>
     </div>
 </div>
+
+<div id="typeOfController" data-controller="BirdSearch"></div>
