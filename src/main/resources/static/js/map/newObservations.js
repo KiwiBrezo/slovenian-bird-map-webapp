@@ -13,9 +13,11 @@
         if ($("#add-observation-location-selector").hasClass("activate")) {
             $("#add-observation-location-selector").removeClass("activate");
             exports.canSelectLocation = false;
+            MapComponent.canIdentify = true;
         } else {
             $("#add-observation-location-selector").addClass("activate");
             exports.canSelectLocation = true;
+            MapComponent.canIdentify = false;
         }
     }
 
@@ -71,6 +73,7 @@
         $("#bird-select-new-observation").val(-1).trigger("change");
         $("#observation-number").val(1);
         MapComponent.newObservationMarkerLayer.getSource().clear();
+        MapComponent.canIdentify = true;
     }
 
 

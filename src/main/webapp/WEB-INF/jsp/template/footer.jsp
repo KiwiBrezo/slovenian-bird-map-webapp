@@ -8,6 +8,7 @@
 <script src="/js/map/analyzer.js" type="text/javascript"></script>
 <script src="/js/map/search.js" type="text/javascript"></script>
 <script src="/js/map/notification.js" type="text/javascript"></script>
+<script src="/js/map/identify.js" type="text/javascript"></script>
 <script src="/js/bird/info.js" type="text/javascript"></script>
 <script src="/js/bird/search.js" type="text/javascript"></script>
 <script src="/js/utils/test.js" type="text/javascript"></script>
