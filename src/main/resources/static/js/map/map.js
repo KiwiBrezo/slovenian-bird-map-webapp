@@ -389,6 +389,11 @@
                     })
                 );
                 MapComponent.newObservationMarkerLayer.getSource().addFeature(marker);
+
+                IdentifyComponent.identifyOnLocation({
+                    left: e.pixel_[0],
+                    top: e.pixel_[1]
+                }, SearchComponent.cqlFilter);
             }
         });
 
