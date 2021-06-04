@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -18,13 +19,13 @@ import java.net.URL;
 @RequestMapping("/proxy")
 public class ProxyController {
     @GetMapping("/get")
-    public ResponseEntity<Object> getProxy() {
-        return null;
+    public void getProxy(@RequestParam("url") String url, HttpServletResponse response) {
+        makeCallToUrl(url, response);
     }
 
     @PostMapping("/post")
-    public ResponseEntity<Object> postProxy() {
-        return null;
+    public void postProxy(@RequestParam("url") String url, HttpServletResponse response) {
+        makeCallToUrl(url, response);
     }
 
     private void makeCallToUrl(String sanitizedUrl, HttpServletResponse response) {
