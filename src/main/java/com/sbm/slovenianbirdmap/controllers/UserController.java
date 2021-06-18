@@ -2,8 +2,8 @@ package com.sbm.slovenianbirdmap.controllers;
 
 import com.sbm.slovenianbirdmap.models.form.LoginForm;
 import com.sbm.slovenianbirdmap.models.form.RegisterForm;
-import com.sbm.slovenianbirdmap.utils.JspModelAttributes;
-import com.sbm.slovenianbirdmap.utils.PageNames;
+import com.sbm.slovenianbirdmap.utils.jsp.JspModelAttributes;
+import com.sbm.slovenianbirdmap.utils.jsp.PageNames;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

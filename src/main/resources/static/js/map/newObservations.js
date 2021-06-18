@@ -43,7 +43,7 @@
             return;
         }
         $.ajax({
-            url: "/api/addObservation",
+            url: "/api/observation/addObservation",
             method: "post",
             data: {
                 birdID: $("#bird-select-new-observation").find(":selected").val(),

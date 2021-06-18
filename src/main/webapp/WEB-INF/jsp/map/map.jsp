@@ -160,4 +160,6 @@
 
 <div id="defaultCqlFilter" data-cql="${defaultCqlFilter}"></div>
 
+<div id="geoserverData" data-wms="${geoserverWms}" data-wfs="${geoserverWfs}"></div>
+
 <div id="typeOfController" data-controller="Map"></div>

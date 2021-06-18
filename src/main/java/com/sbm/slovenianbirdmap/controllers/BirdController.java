@@ -2,10 +2,8 @@ package com.sbm.slovenianbirdmap.controllers;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.sbm.slovenianbirdmap.models.BirdModel;
-import com.sbm.slovenianbirdmap.utils.JspModelAttributes;
-import com.sbm.slovenianbirdmap.utils.PageNames;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import com.sbm.slovenianbirdmap.utils.jsp.JspModelAttributes;
+import com.sbm.slovenianbirdmap.utils.jsp.PageNames;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -43,23 +41,5 @@ public class BirdController extends AbstractController{
         }
 
         return "redirect:/user/login";
-    }
-
-    @PostMapping("/library/search")
-    public ResponseEntity<Object> librarySearchForBird(@RequestParam(name = "term") String term,
-                                                       @RequestParam(name = "limit") Long limit,
-                                                       @RequestParam(name = "offset") Long offset) {
-        return new ResponseEntity<Object>(birdsDao.searchBirdByTerm(term, limit, offset), HttpStatus.OK);
-    }
-
-    @GetMapping("/getSome")
-    public ResponseEntity<Object> libraryLoadBirds(@RequestParam(name = "limit") Long limit,
-                                                   @RequestParam(name = "offset") Long offset) {
-        return new ResponseEntity<Object>(birdsDao.getSomeBird(limit, offset), HttpStatus.OK);
-    }
-
-    @GetMapping("/getAll")
-    public ResponseEntity<Object> getAllBirds() {
-        return new ResponseEntity<Object>(birdsDao.getAllBird(), HttpStatus.OK);
     }
 }

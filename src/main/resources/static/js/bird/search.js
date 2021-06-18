@@ -1,4 +1,4 @@
-(function (exports) {
+ (function (exports) {
     const DEFAULT_LIMIT = 10;
     const DEFAULT_OFFSET = 0;
 
@@ -15,7 +15,7 @@
 
     exports.loadSomeBirds = function() {
         $.ajax({
-            url: "/bird/getSome",
+            url: "/api/bird/getSome",
             data: {
                 "limit": currentLimit,
                 "offset": currentOffset
@@ -27,7 +27,7 @@
 
     exports.loadSearchedBirds = function () {
         $.post({
-            url: "/bird/library/search",
+            url: "/api/bird/library/search",
             data: {
                 "term": $("#librarySearchInput").val() || "",
                 "limit": currentLimit,

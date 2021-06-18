@@ -30,6 +30,7 @@
         SearchComponent.init();
         NotificationComponent.init();
         IdentifyComponent.init();
+        GeoserverUtilComponent.init();
 
         var startCql = $("#defaultCqlFilter").data("cql");
         if (startCql != null && startCql != "") {
@@ -72,7 +73,7 @@
     exports.addNewLayer = function(params, layerName) {
         var newLayer = new ol.layer.Tile({
             source: new ol.source.TileWMS({
-                url: "http://83.212.82.148:8080/geoserver/slovenian-bird-map/wms",
+                url: GeoserverUtilComponent.geoserverWms,
                 params: params || {}
             }),
             name: layerName
@@ -84,7 +85,7 @@
     exports.addNewImageLayer = function(params, layerName) {
         var newLayer = new ol.layer.Image({
             source: new ol.source.ImageWMS({
-                url: "http://83.212.82.148:8080/geoserver/slovenian-bird-map/wms",
+                url: GeoserverUtilComponent.geoserverWms,
                 params: params || {}
             }),
             name: layerName
@@ -484,7 +485,7 @@
         });
 
         $.ajax({
-            url: "/bird/getAll",
+            url: "/api/bird/getAll",
         }).done(function (data) {
             var dataForSelect = [];
             data.forEach(function (obj) {
@@ -501,7 +502,7 @@
         });
 
         $.ajax({
-            url: "/area/getAll",
+            url: "/api/area/getAll",
         }).done(function (data) {
             var dataForSelect = [];
             data.forEach(function (obj) {

@@ -1,7 +1,7 @@
 package com.sbm.slovenianbirdmap.controllers;
 
-import com.sbm.slovenianbirdmap.utils.JspModelAttributes;
-import com.sbm.slovenianbirdmap.utils.PageNames;
+import com.sbm.slovenianbirdmap.utils.jsp.JspModelAttributes;
+import com.sbm.slovenianbirdmap.utils.jsp.PageNames;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

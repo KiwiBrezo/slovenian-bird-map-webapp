@@ -1,4 +1,4 @@
-package com.sbm.slovenianbirdmap.utils;
+package com.sbm.slovenianbirdmap.utils.jsp;
 
 public class PageNames {
     private PageNames() { }

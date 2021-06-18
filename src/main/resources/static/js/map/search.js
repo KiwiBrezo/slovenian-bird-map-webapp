@@ -30,7 +30,7 @@
         SearchComponent.cqlFilter = "";
 
         $.ajax({
-            url: "/api/searchObservationDistinctBirdIDs",
+            url: "/api/observation/searchObservationDistinctBirdIDs",
             method: "get",
             data: {
                 term: currentTerm
@@ -42,7 +42,7 @@
         });
 
         $.ajax({
-            url: "/api/searchObservation",
+            url: "/api/observation/searchObservation",
             method: "get",
             data: {
                 term: currentTerm,
@@ -60,7 +60,7 @@
         $("#loadMoreResults").remove();
         currentOffset += DEFAULT_LIMIT;
         $.ajax({
-            url: "/api/searchObservation",
+            url: "/api/observation/searchObservation",
             method: "get",
             data: {
                 term: currentTerm,

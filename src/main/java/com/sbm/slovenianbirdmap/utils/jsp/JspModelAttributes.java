@@ -1,4 +1,4 @@
-package com.sbm.slovenianbirdmap.utils;
+package com.sbm.slovenianbirdmap.utils.jsp;
 
 public class JspModelAttributes {
     private JspModelAttributes() { }
@@ -8,6 +8,8 @@ public class JspModelAttributes {
     public static final String USER_NAME = "userName";
     public static final String USER_ID = "userID";
     public static final String MAP_START_CQL_FILTER= "defaultCqlFilter";
+    public static final String GEOSERVER_WMS= "geoserverWms";
+    public static final String GEOSERVER_WFS= "geoserverWfs";
     public static final String BIRD_LIBRARY_LIST = "birdList";
     public static final String BIRD_DATA_OBJECT = "birdData";
     public static final String BIRD_INFO_DATA = "birdInfoData";
