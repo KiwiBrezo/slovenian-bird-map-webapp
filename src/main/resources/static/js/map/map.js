@@ -377,6 +377,8 @@
                 var marker = new ol.Feature(new ol.geom.Point(ol.proj.fromLonLat(coordinate)));
                 MapComponent.newObservationMarkerLayer.getSource().addFeature(marker);
             } else if (MapComponent.canIdentify) {
+                return;
+                //TODO: identify not working rn
                 MapComponent.newObservationMarkerLayer.getSource().clear();
                 var coordinate = ol.proj.transform(e.coordinate, 'EPSG:3857', 'EPSG:4326');
 
@@ -394,6 +396,11 @@
                     left: e.pixel_[0],
                     top: e.pixel_[1]
                 }, SearchComponent.cqlFilter);
+
+                /*IdentifyComponent.identifyOnLocation({
+                    lon: coordinate[0],
+                    lat: coordinate[1]
+                }, SearchComponent.cqlFilter);*/
             }
         });
 

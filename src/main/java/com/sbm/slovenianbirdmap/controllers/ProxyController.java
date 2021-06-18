@@ -1,7 +1,6 @@
 package com.sbm.slovenianbirdmap.controllers;
 
 import com.sbm.slovenianbirdmap.utils.RegexConst;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,53 +17,55 @@ import java.net.URL;
 @Controller
 @RequestMapping("/proxy")
 public class ProxyController {
-    @GetMapping("/get")
-    public void getProxy(@RequestParam("url") String url, HttpServletResponse response) {
-        makeCallToUrl(url, response);
+    private final String GET_REQUEST = "GET";
+    private final String POST_REQUEST = "POST";
+
+    @GetMapping("/data")
+    public void getDataProxy(@RequestParam("url") String url,
+                         HttpServletResponse response) {
+        makeCallToUrl(url, response, GET_REQUEST);
     }
 
-    @PostMapping("/post")
-    public void postProxy(@RequestParam("url") String url, HttpServletResponse response) {
-        makeCallToUrl(url, response);
+    @PostMapping("/data")
+    public void postDataProxy(@RequestParam("url") String url,
+                         HttpServletResponse response) {
+        makeCallToUrl(url, response, POST_REQUEST);
     }
 
-    private void makeCallToUrl(String sanitizedUrl, HttpServletResponse response) {
-        OutputStream rostream = null;
-        InputStream ristream = null;
+    private void makeCallToUrl(String url,
+                               HttpServletResponse response,
+                               String method) {
+        OutputStream outputStream = null;
+        InputStream inputStream = null;
         try {
-
-            ristream = getInputStream(sanitizedUrl, response);
-            if (ristream != null) {
-                rostream = response.getOutputStream();
+            inputStream = getInputStream(url, response, method);
+            if (inputStream != null) {
+                outputStream = response.getOutputStream();
                 response.setHeader("Access-Control-Allow-Headers", "*");
                 response.setHeader("X-FRAME-OPTIONS", "SAMEORIGIN");
 
-                if (sanitizedUrl.contains(".terrain")) {
-                    response.addHeader("Content-Encoding", "gzip");
-                }
-
                 final int bufferSize = 20480;
                 byte[] buffer = new byte[bufferSize];
-                int bytsRead = ristream.read(buffer);
+                int bytsRead = inputStream.read(buffer);
                 while (bytsRead != -1) {
-                    rostream.write(buffer, 0, bytsRead);
-                    bytsRead = ristream.read(buffer);
+                    outputStream.write(buffer, 0, bytsRead);
+                    bytsRead = inputStream.read(buffer);
                 }
-                rostream.flush();
+                outputStream.flush();
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             try {
-                if (rostream != null) {
-                    rostream.close();
+                if (outputStream != null) {
+                    outputStream.close();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
             try {
-                if (ristream != null) {
-                    ristream.close();
+                if (inputStream != null) {
+                    inputStream.close();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -72,20 +73,21 @@ public class ProxyController {
         }
     }
 
-    private InputStream getInputStream(final String sanitizedUrl, HttpServletResponse response) throws IOException {
-        InputStream is = null;
+    private InputStream getInputStream(String url,
+                                       HttpServletResponse response,
+                                       String method) throws IOException {
+        InputStream inputStream = null;
         HttpURLConnection connection = null;
 
-        if (sanitizedUrl != null && sanitizedUrl.length() > 0) {
-
-            connection = (HttpURLConnection) new URL(sanitizedUrl).openConnection();
-            connection.setRequestMethod("GET");
-            is = connection.getInputStream();
+        if (url != null && url.length() > 0) {
+            connection = (HttpURLConnection) new URL(url).openConnection();
+            connection.setRequestMethod(method);
+            inputStream = connection.getInputStream();
             String rawContentDisposition = connection.getHeaderField("Content-Disposition");
             response.setContentType(RegexConst.filter(connection.getContentType(), RegexConst.HTTP_CONTENT_TYPE_FILTER));
             response.setHeader("Content-Disposition", rawContentDisposition);
         }
 
-        return is;
+        return inputStream;
     }
 }
