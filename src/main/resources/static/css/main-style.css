@@ -226,3 +226,18 @@
 .bird-data .data-row .value-data {
     color: #65724a;
 }
+
+.left-menu-content {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    width: 65px;
+    box-shadow: 8px 0px 12px #d8d8d8a3;
+}
+
+.left-menu-content .navigation-buttons {
+    position: fixed;
+    bottom: 0px;
+    font-size: 25px;
+}

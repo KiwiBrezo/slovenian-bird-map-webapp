@@ -1,6 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 
+<jsp:include page="../template/leftMenu.jsp" />
+
 <div class="main-content">
     <div class="library-search-container">
         <div class="row">
@@ -29,4 +31,4 @@
     </div>
 </div>
 
-<div id="typeOfController" data-controller="BirdSearch"></div>
+<div id="typeOfController" data-controller="BirdSearch,LeftMenu"></div>

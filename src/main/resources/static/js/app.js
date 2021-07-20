@@ -29,6 +29,9 @@
                 case "Admin":
                     // TODO: need admin controller
                     break;
+                case "LeftMenu":
+                    LeftMenuComponent.init();
+                    break;
                 default:
                     console.log("No controller needed");
             }

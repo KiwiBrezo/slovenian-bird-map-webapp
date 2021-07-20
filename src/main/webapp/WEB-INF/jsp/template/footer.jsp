@@ -13,6 +13,7 @@
 <script src="/js/bird/search.js" type="text/javascript"></script>
 <script src="/js/utils/test.js" type="text/javascript"></script>
 <script src="/js/utils/geoserver.js" type="text/javascript"></script>
+<script src="/js/utils/leftMenu.js" type="text/javascript"></script>
 <!-- STATIC -->
 
 <!-- WEBJARS -->
