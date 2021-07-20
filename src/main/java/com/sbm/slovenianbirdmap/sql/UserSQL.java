@@ -29,6 +29,12 @@ public class UserSQL {
     @Value("${user.check.user.mobile.token}")
     private String checkUserMobile;
 
+    @Value("${user.get.number.of.all.observations}")
+    private String getAllObservationForUser;
+
+    @Value("${user.get.number.of.all.observations.year}")
+    private String getAllObservationForUserYear;
+
     public String getCheckUserMobile() { return checkUserMobile; }
 
     public String getGetUserName() {
@@ -52,4 +58,8 @@ public class UserSQL {
     public String getLoginUserRole() {
         return loginUserRole;
     }
+
+    public String getGetAllObservationForUser() { return getAllObservationForUser; }
+
+    public String getGetAllObservationForUserYear() { return getAllObservationForUserYear; }
 }

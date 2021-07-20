@@ -1,11 +1,16 @@
 package com.sbm.slovenianbirdmap.dao;
 
+import com.sbm.slovenianbirdmap.models.analysis.UserObservation;
 import com.sbm.slovenianbirdmap.models.form.LoginForm;
 import com.sbm.slovenianbirdmap.models.form.RegisterForm;
+import com.sbm.slovenianbirdmap.models.form.UserIDForm;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Service;
+import static java.time.temporal.TemporalAdjusters.firstDayOfYear;
+import static java.time.temporal.TemporalAdjusters.lastDayOfYear;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Service
@@ -78,5 +83,30 @@ public class UserDao extends AbstractDao{
                 .addValue("token", mobileToken);
 
         return namedParameterJdbcTemplate.queryForObject(sql, params, Boolean.class);
+    }
+
+    public UserObservation getUserObservationCount(UserIDForm userIDForm) {
+        UserObservation userObservation = new UserObservation();
+        LocalDate dateToday = LocalDate.now();
+        LocalDate startOfTheYear = dateToday.with(firstDayOfYear());
+        LocalDate lastOfTheYear = dateToday.with(lastDayOfYear());
+
+        String sql = userSQL.getGetAllObservationForUser();
+
+        SqlParameterSource params = new MapSqlParameterSource()
+                .addValue("id", userIDForm.getUserID());
+
+        userObservation.setAllTimeObservation(namedParameterJdbcTemplate.queryForObject(sql, params, Long.class));
+
+        sql = userSQL.getGetAllObservationForUserYear();
+
+        params = new MapSqlParameterSource()
+                .addValue("id", userIDForm.getUserID())
+                .addValue("startOfYear", startOfTheYear)
+                .addValue("endOfYear", lastOfTheYear);
+
+        userObservation.setThisYearObservation(namedParameterJdbcTemplate.queryForObject(sql, params, Long.class));
+
+        return userObservation;
     }
 }
