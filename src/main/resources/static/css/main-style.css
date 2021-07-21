@@ -240,4 +240,21 @@
     position: fixed;
     bottom: 0px;
     font-size: 25px;
+    left: 19px;
+}
+
+.left-menu-content .buttons-container {
+    margin-top: 15px;
+    position: fixed;
+    font-size: 25px;
+    left: 19px;
+}
+
+.left-menu-content .navigation-buttons .btn-tooltip, .left-menu-content .buttons-container .btn-tooltip {
+    font-size: 19px;
+    display: none;
+}
+
+.left-menu-content .navigation-buttons .left-menu-btn:hover, .left-menu-content .buttons-container .left-menu-btn:hover {
+    color: #65724a;
 }

@@ -13,4 +13,5 @@ public class JspModelAttributes {
     public static final String BIRD_LIBRARY_LIST = "birdList";
     public static final String BIRD_DATA_OBJECT = "birdData";
     public static final String BIRD_INFO_DATA = "birdInfoData";
+    public static final String USER_ROLE_INFO = "userRoleInfo";
 }
