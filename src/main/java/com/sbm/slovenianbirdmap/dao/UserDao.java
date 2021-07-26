@@ -1,5 +1,7 @@
 package com.sbm.slovenianbirdmap.dao;
 
+import com.sbm.slovenianbirdmap.dao.mappers.UserNameSurnameModelMapper;
+import com.sbm.slovenianbirdmap.models.UserNameSurnameModel;
 import com.sbm.slovenianbirdmap.models.analysis.UserObservation;
 import com.sbm.slovenianbirdmap.models.form.LoginForm;
 import com.sbm.slovenianbirdmap.models.form.RegisterForm;
@@ -83,6 +85,15 @@ public class UserDao extends AbstractDao{
                 .addValue("token", mobileToken);
 
         return namedParameterJdbcTemplate.queryForObject(sql, params, Boolean.class);
+    }
+
+    public UserNameSurnameModel getUserNameSurname(Long userId) {
+        String sql = userSQL.getGetUserNameSurname();
+
+        SqlParameterSource params = new MapSqlParameterSource()
+                .addValue("userId", userId);
+
+        return namedParameterJdbcTemplate.queryForObject(sql, params, new UserNameSurnameModelMapper());
     }
 
     public UserObservation getUserObservationCount(UserIDForm userIDForm) {

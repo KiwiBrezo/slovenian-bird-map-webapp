@@ -23,6 +23,9 @@ public class UserSQL {
     @Value("${user.get.name}")
     private String getUserName;
 
+    @Value("${user.get.name.surname}")
+    private String getUserNameSurname;
+
     @Value("${user.get.userID}")
     private String getUserID;
 
@@ -40,6 +43,8 @@ public class UserSQL {
     public String getGetUserName() {
         return getUserName;
     }
+
+    public String getGetUserNameSurname() { return getUserNameSurname; }
 
     public String getGetUserID() { return getUserID; }
 

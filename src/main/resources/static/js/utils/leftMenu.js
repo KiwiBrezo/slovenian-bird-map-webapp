@@ -32,7 +32,7 @@
         });
 
         $("#ProfileButton").click(function () {
-            window.location.href = "/user/profile/";
+            window.location.href = "/user/dashboard/" + $("#LeftMenu").data("userid");
         });
 
         $("#AdminButton").click(function () {
@@ -50,7 +50,7 @@
     
     function menuExpend() {
         $('#LeftMenu').animate({
-            width:'200px'
+            width:'165px'
         }, 400, "swing", function () {
             $("#LeftMenu .btn-tooltip").show();
         });

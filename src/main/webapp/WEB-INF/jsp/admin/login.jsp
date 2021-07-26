@@ -1,1 +1,0 @@
-<div id="typeOfController" data-controller="Admin"></div>

@@ -20,6 +20,7 @@ public class BirdController extends AbstractController{
         if (userRole.equals("user") || userRole.equals("admin")) {
             model.addAttribute(JspModelAttributes.BIRD_LIBRARY_LIST, birdsDao.getSomeBird(10L, 0L));
             model.addAttribute(JspModelAttributes.USER_ROLE_INFO, userRole);
+            model.addAttribute(JspModelAttributes.USER_ID_LEFT_MENU, userDao.getUserID(userEmail));
             model.addAttribute(JspModelAttributes.VIEW_BODY, PageNames.BIRD_LIBRARY_PAGE);
             return PageNames.INDEX_PAGE;
         }
@@ -36,6 +37,7 @@ public class BirdController extends AbstractController{
             BirdModel bird = birdsDao.getBirdByID(birdID);
             Object obj = objectMapper.readValue(bird.getJsonData(), new TypeReference<Object>(){});
             model.addAttribute(JspModelAttributes.USER_ROLE_INFO, userRole);
+            model.addAttribute(JspModelAttributes.USER_ID_LEFT_MENU, userDao.getUserID(userEmail));
             model.addAttribute(JspModelAttributes.BIRD_DATA_OBJECT, bird);
             model.addAttribute(JspModelAttributes.BIRD_INFO_DATA, obj);
             model.addAttribute(JspModelAttributes.VIEW_BODY, PageNames.BIRD_INFO_PAGE);

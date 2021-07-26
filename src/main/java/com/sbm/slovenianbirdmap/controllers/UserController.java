@@ -106,4 +106,20 @@ public class UserController extends AbstractController {
         response.addCookie(cookieUserID);
         return "redirect:/";
     }
+
+    @GetMapping("/dashboard/{id}")
+    public String showUserDashboard(@CookieValue(value = "userRole", defaultValue = "none") String userRole,
+                                  @CookieValue(value = "userEmail", defaultValue = "none") String userEmail,
+                                  @PathVariable(value = "id") final Long id,
+                                  Model model) {
+        if (userRole.equals("user") || userRole.equals("admin")) {
+            model.addAttribute(JspModelAttributes.USER_ROLE_INFO, userRole);
+            model.addAttribute(JspModelAttributes.USER_ID, id);
+            model.addAttribute(JspModelAttributes.USER_BASIC_DATA, userDao.getUserNameSurname(id));
+            model.addAttribute(JspModelAttributes.VIEW_BODY, PageNames.USER_DASHBOARD_PAGE);
+            return PageNames.INDEX_PAGE;
+        }
+
+        return "redirect:/user/login";
+    }
 }

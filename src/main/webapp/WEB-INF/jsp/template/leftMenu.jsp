@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<div class="left-menu-content" id="LeftMenu" style="display: none">
+<div class="left-menu-content" id="LeftMenu" style="display: none" data-userid="${userIdLeftMenu}">
     <div class="logo-container">
         <img src="/icons/logo_DOPPS.png" alt="Ni logo" width="65" height="65">
     </div>
