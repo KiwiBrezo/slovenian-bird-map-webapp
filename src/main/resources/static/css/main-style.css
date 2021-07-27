@@ -143,7 +143,7 @@
     margin-left: auto;
 }
 
-.main-bird-info-container {
+.main-bird-info-container, .main-user-info-container {
     margin-top: 40px;
 }
 
@@ -167,7 +167,7 @@
     font-style: italic;
 }
 
-.bird-map-link {
+.bird-map-link, .user-map-link {
     margin-top: 15px;
 }
 
@@ -257,4 +257,35 @@
 
 .left-menu-content .navigation-buttons .left-menu-btn:hover, .left-menu-content .buttons-container .left-menu-btn:hover {
     color: #65724a;
+}
+
+.settings-section {
+    margin-top: 50px;
+    width: 100%;
+    padding: 10px 20px;
+    border: 1px solid #65724a;
+    border-radius: 10px;
+}
+
+.settings-section .change-passw-section {
+    border: 1px solid #6c757d;
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+.settings-section .change-passw-section #ChangePasswdBtn {
+    margin-top: 5px;
+    position: relative;
+    left: 89.5%;
+}
+
+.settings-section .reset-observations-section {
+    border: 1px solid #6c757d;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-top: 10px;
+}
+
+.settings-section .reset-observations-section input {
+    display: none;
 }

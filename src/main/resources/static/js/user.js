@@ -4,6 +4,19 @@
         userInit();
     }
 
+    exports.deleteUsersObservation = function () {
+        if ($("#ResetObservationPassw").val() == "") {
+            showResetObservationInput();
+        } else {
+            //TODO
+        }
+    }
+
+    function showResetObservationInput() {
+        $("#ResetObservationPassw").show();
+        $("#ResetObservationPassw").val(null);
+    }
+
     function userInit() {
         if ($("#succMsgVal").text() != "") {
             $("#succMsg").show();
