@@ -58,7 +58,9 @@
             .click(function () {
                 BirdInfoComponent.showInfoForBird(data.birdID)
             });
-        $('.observation-info-container #userData').text("Opazovalec: " + data.userName + " " + data.userSurname);
+        $('.observation-info-container #userData').text("Opazovalec: " + data.userName + " " + data.userSurname).click(function () {
+            window.location.href = "/user/dashboard/" + data.userID;
+        });
         $('.observation-info-container #col').text("Št. osebkov: " + data.col);
         $('.observation-info-container #dateOfObservation').text("Datum: " + new Date(data.date).toISOString().split('T')[0]);
         $('.observation-info-container #comment').text(data.comment);
@@ -250,7 +252,7 @@
             element.removeClass("fa-caret-down");
             element.addClass("fa-caret-up");
             $(".user-container").animate({
-                height: "155px"
+                height: "130px"
             }, 300, function () {
                 $(".user-container-body").show();
             });

@@ -9,6 +9,7 @@ public class JspModelAttributes {
     public static final String USER_ID = "userID";
     public static final String USER_ID_LEFT_MENU = "userIdLeftMenu";
     public static final String USER_BASIC_DATA = "userBasicData";
+    public static final String USER_ENABLE_SETTINGS = "userEnableSettings";
     public static final String MAP_START_CQL_FILTER= "defaultCqlFilter";
     public static final String GEOSERVER_WMS= "geoserverWms";
     public static final String GEOSERVER_WFS= "geoserverWfs";

@@ -86,8 +86,11 @@
                     .text(observation.birdName));
 
                 rowElement.find(".second-row").append($("<p>")
-                    .addClass("col-8 mx-1 observer-name-container")
-                    .text("Opazovalec: " + observation.userName + " " + observation.userSurname));
+                    .addClass("col-8 mx-1 observer-name-container cursor-pointer")
+                    .text("Opazovalec: " + observation.userName + " " + observation.userSurname)
+                    .click(function () {
+                        window.location.href = "/user/dashboard/" + observation.userID;
+                    }));
 
                 rowElement.find(".first-row").append($("<div>")
                     .addClass("col-3")

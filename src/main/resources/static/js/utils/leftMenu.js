@@ -35,9 +35,11 @@
             window.location.href = "/user/dashboard/" + $("#LeftMenu").data("userid");
         });
 
-        $("#AdminButton").click(function () {
-           window.location.href = "/map/";
-        });
+        if ($("#AdminButton")) {
+            $("#AdminButton").click(function () {
+                window.location.href = "/admin/dashboard/" + $("#LeftMenu").data("userid");
+            });
+        }
 
         $("#LogoutButton").click(function () {
            window.location.href = "/user/logout";

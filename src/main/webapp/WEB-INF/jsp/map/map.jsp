@@ -25,13 +25,10 @@
     </div>
     <div class="user-container-body">
         <div class="row mx-1">
-            <span class="cursor-pointer"><a href="#">Profil</a></span>
+            <span class="cursor-pointer"><a href="/user/dashboard/${userID}">Profil</a></span>
         </div>
         <div class="row mx-1">
             <span class="cursor-pointer"><a href="/bird/">Knjižnjica ptic</a></span>
-        </div>
-        <div class="row mx-1">
-            <span class="cursor-pointer"><a href="#">Nastavitve</a></span>
         </div>
         <div class="row mx-1">
             <span class="cursor-pointer"><a href="/user/logout">Odjava</a></span>
@@ -79,7 +76,7 @@
     <div class="container-body">
         <h3 class="bird-name-title" id="birdNormalName"></h3>
         <div class="row" style="margin-bottom: 4px">
-            <span class="col-7" id="userData"></span>
+            <span class="col-7 cursor-pointer" id="userData"></span>
             <span class="number-container" id="col"></span>
         </div>
         <div class="row" style="margin-bottom: 7px">

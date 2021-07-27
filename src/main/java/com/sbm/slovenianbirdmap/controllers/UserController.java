@@ -113,9 +113,13 @@ public class UserController extends AbstractController {
                                   @PathVariable(value = "id") final Long id,
                                   Model model) {
         if (userRole.equals("user") || userRole.equals("admin")) {
+            Long loggedUserID = userDao.getUserID(userEmail);
+
             model.addAttribute(JspModelAttributes.USER_ROLE_INFO, userRole);
             model.addAttribute(JspModelAttributes.USER_ID, id);
             model.addAttribute(JspModelAttributes.USER_BASIC_DATA, userDao.getUserNameSurname(id));
+            model.addAttribute(JspModelAttributes.USER_ID_LEFT_MENU, loggedUserID);
+            model.addAttribute(JspModelAttributes.USER_ENABLE_SETTINGS, id == loggedUserID);
             model.addAttribute(JspModelAttributes.VIEW_BODY, PageNames.USER_DASHBOARD_PAGE);
             return PageNames.INDEX_PAGE;
         }
