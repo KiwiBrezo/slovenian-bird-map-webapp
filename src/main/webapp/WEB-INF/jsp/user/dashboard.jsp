@@ -2,16 +2,38 @@
 <jsp:include page="../template/leftMenu.jsp" />
 
 <div class="main-content">
-    <div class="main-user-info-container">
+    <div class="main-user-info-container" data-userid="${userID}">
         <div class="name-section">
             <h1>${userBasicData.name} ${userBasicData.surname}</h1>
+        </div>
+
+        <div class="analytic-data-section">
+            <div class="row">
+                <div class="col-4">
+                    <div class="numbers-observation-section">
+                        <div class="my-2">
+                            <h5>Stevilo vseh opazovanj:</h5>
+                            <input type="number" disabled value="0" id="AllObservations" class="form-control">
+                        </div>
+
+                        <div class="my-2">
+                            <h5>Stevilo opazovanj tega leta:</h5>
+                            <input type="number" disabled value="0" id="YearObservations" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-8">
+
+                </div>
+            </div>
         </div>
 
         <div class="row user-map-link">
             <div class="link-container">
                 <a href="/map/user/${userID}">
                     <i class="fas fa-globe-europe"></i>
-                    Poglej na zemljevidu
+                    Opazovanja uporabnika
                 </a>
             </div>
         </div>

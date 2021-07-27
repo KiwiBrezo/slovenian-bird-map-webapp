@@ -1,4 +1,6 @@
 (function (exports) {
+    var userProfileId = null;
+
     exports.init = function() {
         console.log("User controller init...");
         userInit();
@@ -33,6 +35,23 @@
         $('#registerForm').submit(function() {
             $("#registerPasswordInput").val(sha512($("#loginPasswordInput").text()));
             return true;
+        });
+
+        if($(".main-user-info-container")) {
+            userProfileId = $(".main-user-info-container").data("userid");
+            showAnalyticData();
+        }
+    }
+
+    function showAnalyticData() {
+        $.ajax({
+            url: "/api/analysis/user/getNumberOfObservations",
+            data: {
+                "userID": userProfileId
+            }
+        }).done(function (data) {
+            $("#AllObservations").val(data.allTimeObservation);
+            $("#YearObservations").val(data.thisYearObservation);
         });
     }
 })(UserController = {})

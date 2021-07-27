@@ -289,3 +289,11 @@
 .settings-section .reset-observations-section input {
     display: none;
 }
+
+.analytic-data-section {
+    margin-top: 15px;
+    margin-bottom: 35px;
+    border-top: 1px solid #6c757d;
+    border-bottom: 1px solid #6c757d;
+    padding: 10px 20px;
+}

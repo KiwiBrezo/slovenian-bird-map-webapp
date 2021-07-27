@@ -9,10 +9,7 @@ import com.sbm.slovenianbirdmap.models.form.UserIDForm;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Service;
-import static java.time.temporal.TemporalAdjusters.firstDayOfYear;
-import static java.time.temporal.TemporalAdjusters.lastDayOfYear;
 
-import java.time.LocalDate;
 import java.util.UUID;
 
 @Service
@@ -98,9 +95,6 @@ public class UserDao extends AbstractDao{
 
     public UserObservation getUserObservationCount(UserIDForm userIDForm) {
         UserObservation userObservation = new UserObservation();
-        LocalDate dateToday = LocalDate.now();
-        LocalDate startOfTheYear = dateToday.with(firstDayOfYear());
-        LocalDate lastOfTheYear = dateToday.with(lastDayOfYear());
 
         String sql = userSQL.getGetAllObservationForUser();
 
@@ -110,11 +104,6 @@ public class UserDao extends AbstractDao{
         userObservation.setAllTimeObservation(namedParameterJdbcTemplate.queryForObject(sql, params, Long.class));
 
         sql = userSQL.getGetAllObservationForUserYear();
-
-        params = new MapSqlParameterSource()
-                .addValue("id", userIDForm.getUserID())
-                .addValue("startOfYear", startOfTheYear)
-                .addValue("endOfYear", lastOfTheYear);
 
         userObservation.setThisYearObservation(namedParameterJdbcTemplate.queryForObject(sql, params, Long.class));
 
