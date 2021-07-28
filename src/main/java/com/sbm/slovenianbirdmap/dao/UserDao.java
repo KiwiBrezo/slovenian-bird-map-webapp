@@ -92,21 +92,4 @@ public class UserDao extends AbstractDao{
 
         return namedParameterJdbcTemplate.queryForObject(sql, params, new UserNameSurnameModelMapper());
     }
-
-    public UserObservation getUserObservationCount(UserIDForm userIDForm) {
-        UserObservation userObservation = new UserObservation();
-
-        String sql = userSQL.getGetAllObservationForUser();
-
-        SqlParameterSource params = new MapSqlParameterSource()
-                .addValue("id", userIDForm.getUserID());
-
-        userObservation.setAllTimeObservation(namedParameterJdbcTemplate.queryForObject(sql, params, Long.class));
-
-        sql = userSQL.getGetAllObservationForUserYear();
-
-        userObservation.setThisYearObservation(namedParameterJdbcTemplate.queryForObject(sql, params, Long.class));
-
-        return userObservation;
-    }
 }
