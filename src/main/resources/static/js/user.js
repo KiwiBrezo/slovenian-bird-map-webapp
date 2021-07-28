@@ -37,7 +37,7 @@
             return true;
         });
 
-        if($(".main-user-info-container")) {
+        if($(".main-user-info-container").is(":visible")) {
             userProfileId = $(".main-user-info-container").data("userid");
             showAnalyticData();
         }
@@ -52,6 +52,33 @@
         }).done(function (data) {
             $("#AllObservations").val(data.allTimeObservation);
             $("#YearObservations").val(data.thisYearObservation);
+        });
+
+        $.ajax({
+            url: "/api/analysis/user/getNumberOfObservationsWeekly",
+            data: {
+                "userID": userProfileId
+            }
+        }).done(function (data) {
+            console.log(data);
+        });
+
+        $.ajax({
+            url: "/api/analysis/user/getNumberOfObservationsMonthly",
+            data: {
+                "userID": userProfileId
+            }
+        }).done(function (data) {
+            console.log(data);
+        });
+
+        $.ajax({
+            url: "/api/analysis/user/getLastObservations",
+            data: {
+                "userID": userProfileId
+            }
+        }).done(function (data) {
+            console.log(data);
         });
     }
 })(UserController = {})

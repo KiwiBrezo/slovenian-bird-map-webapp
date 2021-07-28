@@ -4,7 +4,7 @@
 <jsp:include page="../template/leftMenu.jsp" />
 
 <div class="main-content">
-    <div class="main-bird-info-container">
+    <div class="main-bird-info-container" data-birdid="${birdData.birdID}">
         <div class="row main-bird-info">
             <div class="col-7">
                 <h1>${birdData.name}</h1>
