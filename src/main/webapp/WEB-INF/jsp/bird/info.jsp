@@ -73,7 +73,37 @@
                     </c:if>
                 </div>
                 <div class="col-6">
+                    <div class="numbers-observation-section">
+                        <div class="mb-4">
+                            <h5>Stevilo opazenih osebkov:</h5>
+                            <input type="number" disabled value="0" id="NumberOfObservedType" class="form-control">
+                        </div>
 
+                        <div class="mt-2">
+                            <h5>Stevilo opazovalcev te ptice:</h5>
+                            <input type="number" disabled value="0" id="NumberOfObservers" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="analytic-data-section">
+            <div class="row my-5">
+                <div class="season-observation-section observation-graph">
+                    <canvas id="SeasonObservationsBird" class="season-observation-graph" width="400px" height="400px"></canvas>
+                </div>
+            </div>
+
+            <div class="row my-5">
+                <div class="monthly-observation-section observation-graph">
+                    <canvas id="MonthlyObservationsBird" class="monthly-observation-graph observation-graph" width="800px" height="400px"></canvas>
+                </div>
+            </div>
+
+            <div class="row my-5">
+                <div class="yearly-observation-section observation-graph">
+                    <canvas id="YearlyObservationsBird" class="yearly-observation-graph observation-graph" width="800px" height="400px"></canvas>
                 </div>
             </div>
         </div>

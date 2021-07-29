@@ -297,3 +297,31 @@
     border-bottom: 1px solid #6c757d;
     padding: 10px 20px;
 }
+
+
+.last-observation-section {
+    height: 160px;
+}
+
+.last-observation-section #ListContainer {
+    height: 115px;
+    overflow-y: scroll;
+    overflow-x: clip;
+}
+
+.last-observation-section .last-observation-row-element:first-child {
+    border-bottom: 1px solid #888888;
+}
+
+.last-observation-section .last-observation-row-element div {
+    border-right: 1px solid #6c757d;
+}
+
+.last-observation-section .last-observation-row-element div:first-child {
+    border-left: 1px solid #6c757d;
+}
+
+.observation-graph {
+    margin-left: auto;
+    margin-right: auto;
+}

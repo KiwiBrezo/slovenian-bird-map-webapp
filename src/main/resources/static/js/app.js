@@ -36,5 +36,7 @@
                     console.log("No controller needed");
             }
         });
+
+        UtilsController.init();
     }
 })(AppController = {})
