@@ -3,7 +3,7 @@
 
 <div class="left-menu-content" id="LeftMenu" style="display: none" data-userid="${userIdLeftMenu}">
     <div class="logo-container">
-        <img src="/icons/logo_DOPPS.png" alt="Ni logo" width="65" height="65">
+        <img src="/icons/SlovenianBirdMapLogo.png" alt="Ni logo" width="65" height="65">
     </div>
 
     <c:if test="${userRoleInfo!=null}" >
