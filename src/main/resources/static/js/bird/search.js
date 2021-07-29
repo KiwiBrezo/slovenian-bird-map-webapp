@@ -70,7 +70,7 @@
                             .text(item.nameLat)))
                     .append($("<div>")
                         .addClass("col-4 bird-photo-field")
-                        .append($("<img src='" + item.imageLink + "' alt='Ni fotografije...'>"))));
+                        .append($("<img src='" + item.imageLink + "' class='float-right' alt='Ni fotografije...' width='60px' height='60px'>"))));
 
             $(".search-results-container").append(element);
         });

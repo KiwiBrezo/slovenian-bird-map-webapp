@@ -20,7 +20,7 @@
                         <span>${bird.nameLat}</span>
                     </div>
                     <div class="col-4 bird-photo-field">
-                        <img src="${bird.imageLink}" alt="Ni fotografije...">
+                        <img src="${bird.imageLink}" class="float-right" alt="Ni fotografije..." width="60px" height="60px">
                     </div>
                 </div>
             </div>

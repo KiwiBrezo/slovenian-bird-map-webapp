@@ -11,7 +11,7 @@
                 <h4>Latinsko ime: ${birdData.nameLat}</h4>
             </div>
             <div class="col-5">
-                <img src="${bird.imageLink}" alt="Ni fotografije...">
+                <img src="${birdData.imageLink}" class="float-right" alt="Ni fotografije..." width="270px" height="270px">
             </div>
         </div>
 
