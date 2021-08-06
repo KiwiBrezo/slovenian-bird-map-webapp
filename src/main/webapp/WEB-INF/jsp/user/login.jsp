@@ -10,7 +10,7 @@
 
         <div class="login-form-container">
             <div class="login-logo my-5">
-                <img src="/icons/SlovenianBirdMapLogo.png" alt="Ni logo" width="60" height="90">
+                <img src="/icons/SlovenianBirdMapLogo.png" alt="Ni logo" width="100" height="100">
             </div>
             <form action="/user/login" method="post" enctype="multipart/form-data" id="loginForm">
                 <div class="row mx-5 my-3">

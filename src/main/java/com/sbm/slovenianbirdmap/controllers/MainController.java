@@ -14,11 +14,13 @@ public class MainController extends AbstractController{
                            @CookieValue(value = "userEmail", defaultValue = "none") String userEmail,
                            Model model) {
         if (userRole.equals("user") || userRole.equals("admin")) {
-            model.addAttribute(JspModelAttributes.USER_ROLE_INFO, userRole);
-            model.addAttribute(JspModelAttributes.USER_ID_LEFT_MENU, userDao.getUserID(userEmail));
+            //model.addAttribute(JspModelAttributes.USER_ROLE_INFO, userRole);
+            //model.addAttribute(JspModelAttributes.USER_ID_LEFT_MENU, userDao.getUserID(userEmail));
+            return "redirect:/map/";
         }
 
-        model.addAttribute(JspModelAttributes.VIEW_BODY, PageNames.MAIN_PAGE);
-        return PageNames.INDEX_PAGE;
+        //return PageNames.INDEX_PAGE;
+
+        return "redirect:/user/login";
     }
 }
